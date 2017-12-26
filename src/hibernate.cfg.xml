@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://123.206.29.40:3306/BBBS</property>
+		<property name="hibernate.connection.username">BBBS</property>
+		<property name="hibernate.connection.password">Ywj615ywj</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="connection.characterEncoding">utf8</property>
+		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+		<property name="hibernate.jdbc.lob.non_contextual_creation">true</property>
+		<mapping resource="Hibernate/PO/Userinfo.hbm.xml" />
+		<mapping resource="Hibernate/PO/Usermessagenew.hbm.xml" />
+		<mapping resource="Hibernate/PO/Usercollectnew.hbm.xml" />
+		<mapping resource="Hibernate/PO/Teaminfo.hbm.xml" />
+		<mapping resource="Hibernate/PO/Scoreinfo.hbm.xml" />
+		<mapping resource="Hibernate/PO/Newsinfo.hbm.xml" />
+		<mapping resource="Hibernate/PO/Managerinfo.hbm.xml" />
+		<mapping resource="Hibernate/PO/Gameinfo.hbm.xml" />
+		<mapping resource="Hibernate/PO/Announceinfo.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

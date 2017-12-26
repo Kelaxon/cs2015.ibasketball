@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+  <!DOCTYPE   hibernate-mapping   
+          PUBLIC   "-//Hibernate/Hibernate   Mapping   DTD//EN"   
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class 
+    name="Hibernate.PO.Usermessagenew" 
+    table="usermessagenews"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="usermessagenews"
+    </meta>
+
+    <id
+        name="umnId"
+        type="java.lang.Integer"
+        column="umn_id"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="assigned"
+            type="java.lang.Integer"
+            column="umn_id"
+
+
+        </meta>
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="messageTime"
+        type="java.sql.Timestamp"
+        column="message_time"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="message_time"
+            length="19"
+        </meta>    
+    </property>
+    <property
+        name="messageContent"
+        type="java.lang.String"
+        column="message_content"
+        length="65535"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="message_content"
+            length="65535"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to Newsinfo -->
+    <many-to-one
+        name="newsinfo"
+        class="Hibernate.PO.Newsinfo"
+        not-null="true"
+    >
+        <meta attribute="field-description">
+           @hibernate.many-to-one
+            not-null="true"
+           @hibernate.column name="news_id"         
+        </meta>
+        <column name="news_id" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to Userinfo -->
+    <many-to-one
+        name="userinfo"
+        class="Hibernate.PO.Userinfo"
+        not-null="true"
+    >
+        <meta attribute="field-description">
+           @hibernate.many-to-one
+            not-null="true"
+           @hibernate.column name="user_id"         
+        </meta>
+        <column name="user_id" />
+    </many-to-one>
+
+</class>
+</hibernate-mapping>

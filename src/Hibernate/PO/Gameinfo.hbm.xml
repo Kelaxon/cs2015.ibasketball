@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+  <!DOCTYPE   hibernate-mapping   
+          PUBLIC   "-//Hibernate/Hibernate   Mapping   DTD//EN"   
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class 
+    name="Hibernate.PO.Gameinfo" 
+    table="gameinfo"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="gameinfo"
+    </meta>
+
+    <id
+        name="gameId"
+        type="java.lang.Integer"
+        column="game_id"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="assigned"
+            type="java.lang.Integer"
+            column="game_id"
+
+
+        </meta>
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="gameTime"
+        type="java.sql.Timestamp"
+        column="game_time"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="game_time"
+            length="19"
+        </meta>    
+    </property>
+    <property
+        name="gameLocation"
+        type="java.lang.String"
+        column="game_location"
+        not-null="true"
+        length="65535"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="game_location"
+            length="65535"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="gameTeam1"
+        type="java.lang.String"
+        column="game_team1"
+        not-null="true"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="game_team1"
+            length="20"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="gameTeam2"
+        type="java.lang.String"
+        column="game_team2"
+        not-null="true"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="game_team2"
+            length="20"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="gameResult"
+        type="java.lang.String"
+        column="game_result"
+        length="65535"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="game_result"
+            length="65535"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>
