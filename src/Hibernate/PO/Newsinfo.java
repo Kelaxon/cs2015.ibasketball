@@ -7,7 +7,7 @@ import java.util.Set;
 public class Newsinfo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String newsId;
+	private int newsId;
 	private String newsTitle;
 	private String newsContent;
 	private Timestamp newsTime;
@@ -17,11 +17,11 @@ public class Newsinfo implements Serializable {
 	private Set<Usermessagenew> usermessagenews;
 	private Set<Usercollectnew> usercollectnews;
 
-	public String getNewsId() {
+	public int getNewsId() {
 		return newsId;
 	}
 
-	public void setNewsId(String newsId) {
+	public void setNewsId(int newsId) {
 		this.newsId = newsId;
 	}
 

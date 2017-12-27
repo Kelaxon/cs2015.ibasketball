@@ -3,38 +3,88 @@
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page import="Hibernate.PO.*"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>选题列表</title>
-<sb:head />
+</head>
 <body>
-	<a href="managerTopicIndex.jsp">选题管理</a>
-	<a href="managerStudentIndex.jsp">学生管理</a>
-	<a href="managerTeacherIndex.jsp">教师管理</a> 欢迎您：
-	<s:property value="#session.managerInstance.getMagId()" />
-	<br>
 
-	<H2>选题列表</H2>
-	<table>
-		<tr>
-			<td>选题编号</td>
-			<td>名称</td>
-			<td>类型</td>
-			<td>专业</td>
-		</tr>
-		<s:iterator value="#session.topicList" var="topic" status="st">
-			<tr <s:if test="#st.odd">style="background-color:yellow"</s:if>>
-				<td><s:property value="#topic.getTopicId()" /></td>
-				<td><s:property value="#topic.getTopicTitle()" /></td>
-				<td><s:property value="#topic.getTopicType()" /></td>
-				<td><s:property value="#topic.getTopicMajor()" /></td>
+	<!-- debug:获取数据库内容进行测试按钮 -->
+	<s:form action="DebugAction" method="delete">
+		<s:submit value="Debug" cssClass="btn btn-outline btn-warning btn-sm" />
+	</s:form>
+
+	<!--预留做提示信息 -->
+	<script type="text/javascript">
+		var message = "" + '${message}';
+		if (message != "") {
+			alert(message);
+			message = "";
+		}
+	</script>
+	<!-- part0.侧栏 -->
+
+	<a href="userNewsIndex.jsp">资讯首页</a>
+	<a href="userMessageIndex.jsp">查看我的留言</a>
+
+	<!-- part1.登陆 -->
+	<s:form action="AllUsersLoginAction" method="post" theme="bootstrap"
+		cssClass="form-inline">
+
+		<s:textfield label="用户名" name="username" value="chris"
+			tooltip="Enter your Name here" />
+		<s:textfield label="密码" name="password" value="123456" />
+		<s:submit value="登录" cssClass="btn" />
+		<s:reset value="重置" cssClass="btn" />
+	</s:form>
+
+	<!-- part2.资讯 -->
+	<H2>比赛资讯</H2>
+	<table
+		class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
+		id="selectpro">
+		<thead>
+			<tr>
+				<th data-field="num">新闻编号</th>
+				<th data-field="name">新闻标题</th>
+				<th data-field="ghgongzi">创建时间</th>
+				<th data-field="ghgongzics">创建者</th>
+				<th data-field="ghgongzics">操作</th>
 			</tr>
+		</thead>
+		<s:iterator value="#session.newsInfoList" var="news" status="st">
+			<td><s:property value="#news.getNewsTitle()" /> <!--这里要加修改的模态框 -->
+			</td>
+			<td><s:property value="#news.getNewsTime()" /></td>
+			<td><s:property value="#news.getNewsTime()" /></td>
+			<td><s:property value="#news.getManagerinfo.getMagName()" /></td>
+			<td><s:form action="ManagerCDUNewsAction" method="delete">
+					<s:hidden name="newsId" value="%{#news.getNewsId()}" />
+					<s:submit value="删除" cssClass="btn btn-outline btn-warning btn-sm" />
+				</s:form></td><tr>
 		</s:iterator>
 	</table>
-	<a href="login.jsp">退出登陆</a>
-	<a href="javascript:history.back()">返回上页</a>
-	
+
+	<!--模态框的内容 -->
+	<s:form action="TeacherUpdateTopicAction" method="post"
+		theme="bootstrap">
+		<h4>
+			<s:textfield label="新闻标题" cssClass="form-control" name="topicTitle"
+				value="%{#topic.getTopicTitle()}" />
+		</h4>
+		<br>
+		<s:textfield readonly="true" label="新闻内容" cssClass="form-control"
+			value="%{#topic.getTeacher().getTeaName()}" />
+		<br>
+		<img src="${news.getNewsPic()} }" class="img-fluid"
+			alt="Responsive image">
+
+		<s:file tooltip="更改图片" label="Picture" name="picture" />
+
+		<s:hidden name="topicId" value="%{#topic.getTopicId()}" />
+		<s:submit value="修改" cssClass="btn btn-outline btn-primary btn-sm" />
+	</s:form>
+	<s:debug />
 </body>
 </html>

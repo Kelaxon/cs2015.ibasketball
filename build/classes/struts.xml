@@ -4,6 +4,10 @@
 
 <struts>
 	<package name="AboutAllUsers" extends="struts-default">
+		<action name="DebugAction" class="Action.DebugAction">
+			<result name="input" type="redirect">/200.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
 		<action name="AllUsersLoginAction" class="Action.AllUsersLoginAction">
 			<result name="user">/userNewsIndex.jsp</result>
 			<result name="manager">/managerNewsIndex.jsp</result>
@@ -42,22 +46,22 @@
 		</action>
 	</package>
 
-<!-- 	<package name="AboutManager" extends="struts-default"> -->
-<!-- 		<action name="ManagerDeleteTeacherAction" class="Action.ManagerDeleteTeacherAction"> -->
-<!-- 			<result name="success">/managerTeacherIndex.jsp</result> -->
-<!-- 			<result name="error">/404.jsp</result> -->
-<!-- 		</action> -->
-<!-- 		<action name="ManagerDeleteStudentAction" class="Action.ManagerDeleteStudentAction"> -->
-<!-- 			<result name="success">/managerStudentIndex.jsp</result> -->
-<!-- 			<result name="error">/404.jsp</result> -->
-<!-- 		</action> -->
-<!-- 		<action name="ManagerUpdateStateAction" class="Action.ManagerUpdateStateAction"> -->
-<!-- 			<result name="success">/managerStateIndex.jsp</result> -->
-<!-- 			<result name="error">/404.jsp</result> -->
-<!-- 		</action> -->
-<!-- 		<action name="ManagerAddFinalChooseAction" class="Action.ManagerAddFinalChooseAction"> -->
-<!-- 			<result name="success">/managerFinalChooseIndex.jsp</result> -->
-<!-- 			<result name="error">/404.jsp</result> -->
-<!-- 		</action> -->
-<!-- 	</package> -->
+	<!-- <package name="AboutManager" extends="struts-default"> -->
+	<!-- <action name="ManagerDeleteTeacherAction" class="Action.ManagerDeleteTeacherAction"> -->
+	<!-- <result name="success">/managerTeacherIndex.jsp</result> -->
+	<!-- <result name="error">/404.jsp</result> -->
+	<!-- </action> -->
+	<!-- <action name="ManagerDeleteStudentAction" class="Action.ManagerDeleteStudentAction"> -->
+	<!-- <result name="success">/managerStudentIndex.jsp</result> -->
+	<!-- <result name="error">/404.jsp</result> -->
+	<!-- </action> -->
+	<!-- <action name="ManagerUpdateStateAction" class="Action.ManagerUpdateStateAction"> -->
+	<!-- <result name="success">/managerStateIndex.jsp</result> -->
+	<!-- <result name="error">/404.jsp</result> -->
+	<!-- </action> -->
+	<!-- <action name="ManagerAddFinalChooseAction" class="Action.ManagerAddFinalChooseAction"> -->
+	<!-- <result name="success">/managerFinalChooseIndex.jsp</result> -->
+	<!-- <result name="error">/404.jsp</result> -->
+	<!-- </action> -->
+	<!-- </package> -->
 </struts>
