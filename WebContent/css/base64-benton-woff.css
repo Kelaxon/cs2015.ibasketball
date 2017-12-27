@@ -1,0 +1,24 @@
+﻿@font-face {
+  font-family: 'BentonSans';
+  font-weight: 700;
+  src: url("../fonts/02c6d212e6d647538de1c133b3e315e9.woff") format("woff");
+}
+@font-face {
+  font-family: 'BentonSans';
+  font-weight: 600;
+  src: url("../fonts/40a7c81158034dc3984ed7ee215873c2.woff") format("woff");
+}
+@font-face {
+  font-family: 'BentonSans';
+  font-weight: 400;
+  src: url("../fonts/e716498cdc6f413f93da4b6010c9a09d.woff") format("woff");
+}
+@font-face {
+  font-family: 'Popular';
+  src: url("../fonts/15bc24e6cce345a1b90f7cbb160ee5c2.woff") format("woff");
+}
+@font-face {
+  font-family: 'BentonSans';
+  font-weight: 300;
+  src: url("../fonts/180c051011ac4ebbb744d68ac42584ad.woff") format("woff");
+}
