@@ -54,7 +54,7 @@ public class AllUsersLoginAction extends ActionSupport {
 //			
 //				Set<Firchoose> firchooseList = student.getFirchooses();
 //				
-//				// 未中选题
+//				// 未中资讯
 //				List<Firchoose> notFinalChooseList = new ArrayList<>();
 //				for (Firchoose firchoose : firchooseList) {
 //					if (finalChooseTopic!=null && (firchoose.getTopic().getTopicId() != finalChooseTopic.getTopicId()))

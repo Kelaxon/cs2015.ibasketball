@@ -8,7 +8,7 @@ import Hibernate.CDU.FasadeCDU;
 import Hibernate.PO.Teacher;
 import Hibernate.PO.Topic;
 
-public class UserCMessageAction extends ActionSupport {
+public class UserCDMessageAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	private String topicTitle;

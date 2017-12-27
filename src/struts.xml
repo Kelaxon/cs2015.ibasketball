@@ -33,10 +33,10 @@
 
 	<package name="AboutUser" extends="struts-default">
 		<action name="UserUInfoAction" class="Action.UserUInfoAction">
-			<result name="success">/userInfoUpdate.jsp</result>
+			<result name="success">/userInfoIndex.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
-		<action name="UserCMessageAction" class="Action.UserCMessageAction">
+		<action name="UserCDMessageAction" class="Action.UserCDMessageAction">
 			<result name="success">/userMessageIndex.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>

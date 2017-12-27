@@ -145,10 +145,10 @@ function rc(a){for(var b=a+"=",c=document.cookie.split(";"),d=0;d<c.length;d++){
 			message = "";
 		}
 	</script>
-	<!-- part0.侧栏 -->
+	<!-- part0.导航栏 -->
 	
 	<a href="userNewsIndex.jsp">资讯首页</a>
-	<a href="userMessageIndex.jsp">查看我的留言</a>
+	<a href="userMessageIndex.jsp">查看我的帖子</a>
 			
 	<!-- part1.登陆 -->
 <%-- 	<s:form action="AllUsersLoginAction" method="post" theme="bootstrap"

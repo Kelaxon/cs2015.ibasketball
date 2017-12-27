@@ -6,15 +6,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>选题列表</title>
+<title>资讯列表</title>
 </head>
 <body>
+
 
 	<!-- debug:获取数据库内容进行测试按钮 -->
 	<s:form action="DebugAction" method="delete">
 		<s:submit value="Debug" cssClass="btn btn-outline btn-warning btn-sm" />
 	</s:form>
-
+	<h3>
+		Welcome,管理员:
+		<s:property value="#session.managerInstance.getMagName()" />
+	</h3>
 	<!--预留做提示信息 -->
 	<script type="text/javascript">
 		var message = "" + '${message}';
@@ -23,21 +27,18 @@
 			message = "";
 		}
 	</script>
-	<!-- part0.侧栏 -->
+	<!-- part0.导航栏 -->
 
-	<a href="userNewsIndex.jsp">资讯首页</a>
-	<a href="userMessageIndex.jsp">查看我的留言</a>
-
-	<!-- part1.登陆 -->
-	<s:form action="AllUsersLoginAction" method="post" theme="bootstrap"
-		cssClass="form-inline">
-
-		<s:textfield label="用户名" name="username" value="chris"
-			tooltip="Enter your Name here" />
-		<s:textfield label="密码" name="password" value="123456" />
-		<s:submit value="登录" cssClass="btn" />
-		<s:reset value="重置" cssClass="btn" />
-	</s:form>
+	<a href="managerNewsIndex.jsp">管理资讯</a>
+	<a href="managerMessageIndex.jsp">管理帖子</a>
+	<a href="managerUsersIndex.jsp">管理发布/TODO</a>
+	<a href="managerUsersIndex.jsp">管理用户</a>
+	<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
+		<s:param name="username">
+			<s:property value="#session.managerInstance.getMagName()" />
+		</s:param>
+	</s:url>
+	<a href="${logoutUrl}">退出登录</a>
 
 	<!-- part2.资讯 -->
 	<H2>比赛资讯</H2>
@@ -54,35 +55,35 @@
 			</tr>
 		</thead>
 		<s:iterator value="#session.newsInfoList" var="news" status="st">
-			<td><s:property value="#news.getNewsTitle()" /> <!--这里要加修改的模态框 -->
+			<td><s:property value="#news.getNewsId()" /> <!--这里要加修改的模态框 -->
 			</td>
-			<td><s:property value="#news.getNewsTime()" /></td>
+			<td><s:property value="#news.getNewsTitle()" /></td>
 			<td><s:property value="#news.getNewsTime()" /></td>
 			<td><s:property value="#news.getManagerinfo.getMagName()" /></td>
 			<td><s:form action="ManagerCDUNewsAction" method="delete">
 					<s:hidden name="newsId" value="%{#news.getNewsId()}" />
-					<s:submit value="删除" cssClass="btn btn-outline btn-warning btn-sm" />
-				</s:form></td><tr>
+					<s:submit value="删除" method="delete"
+						cssClass="btn btn-outline btn-warning btn-sm" />
+				</s:form></td>
+			<tr>
 		</s:iterator>
 	</table>
 
 	<!--模态框的内容 -->
-	<s:form action="TeacherUpdateTopicAction" method="post"
-		theme="bootstrap">
+	<s:form action="ManagerCDUNewsAction" method="update" theme="bootstrap">
 		<h4>
 			<s:textfield label="新闻标题" cssClass="form-control" name="topicTitle"
-				value="%{#topic.getTopicTitle()}" />
+				value="%{#news.getNewsTitle()}" />
 		</h4>
 		<br>
-		<s:textfield readonly="true" label="新闻内容" cssClass="form-control"
-			value="%{#topic.getTeacher().getTeaName()}" />
+		<s:textarea readonly="true" label="新闻内容" cssClass="form-control"
+			value="%{#news.getNewsContent()}" row="15" />
 		<br>
-		<img src="${news.getNewsPic()} }" class="img-fluid"
-			alt="Responsive image">
+		<img src="${news.getNewsPic()} }" class="img-fluid" alt="图片失效">
 
-		<s:file tooltip="更改图片" label="Picture" name="picture" />
+		<s:file label="更改图片" name="picture" />
 
-		<s:hidden name="topicId" value="%{#topic.getTopicId()}" />
+		<s:hidden name="newsId" value="%{#news.getTopicId()}" />
 		<s:submit value="修改" cssClass="btn btn-outline btn-primary btn-sm" />
 	</s:form>
 	<s:debug />
