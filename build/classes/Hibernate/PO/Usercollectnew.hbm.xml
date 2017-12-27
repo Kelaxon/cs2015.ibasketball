@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+  <!DOCTYPE   hibernate-mapping   
+          PUBLIC   "-//Hibernate/Hibernate   Mapping   DTD//EN"   
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class 
+    name="Hibernate.PO.Usercollectnew" 
+    table="usercollectnews"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="usercollectnews"
+    </meta>
+
+    <id
+        name="ucnId"
+        type="java.lang.Integer"
+        column="ucn_id"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="assigned"
+            type="java.lang.Integer"
+            column="ucn_id"
+
+
+        </meta>
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="collectionTime"
+        type="java.sql.Timestamp"
+        column="collection_time"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="collection_time"
+            length="19"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to Newsinfo -->
+    <many-to-one
+        name="newsinfo"
+        class="Hibernate.PO.Newsinfo"
+        not-null="true"
+    >
+        <meta attribute="field-description">
+           @hibernate.many-to-one
+            not-null="true"
+           @hibernate.column name="news_id"         
+        </meta>
+        <column name="news_id" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to Userinfo -->
+    <many-to-one
+        name="userinfo"
+        class="Hibernate.PO.Userinfo"
+        not-null="true"
+    >
+        <meta attribute="field-description">
+           @hibernate.many-to-one
+            not-null="true"
+           @hibernate.column name="user_id"         
+        </meta>
+        <column name="user_id" />
+    </many-to-one>
+
+</class>
+</hibernate-mapping>

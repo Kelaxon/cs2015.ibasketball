@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+  <!DOCTYPE   hibernate-mapping   
+          PUBLIC   "-//Hibernate/Hibernate   Mapping   DTD//EN"   
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+
+<class 
+    name="Hibernate.PO.Teaminfo" 
+    table="teaminfo"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="teaminfo"
+    </meta>
+
+    <id
+        name="teamId"
+        type="java.lang.Integer"
+        column="team_id"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="assigned"
+            type="java.lang.Integer"
+            column="team_id"
+
+
+        </meta>
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="teamName"
+        type="java.lang.String"
+        column="team_name"
+        not-null="true"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="team_name"
+            length="20"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="teamTime"
+        type="java.sql.Timestamp"
+        column="team_time"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="team_time"
+            length="19"
+        </meta>    
+    </property>
+    <property
+        name="teamCoachers"
+        type="java.lang.String"
+        column="team_coachers"
+        length="65535"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="team_coachers"
+            length="65535"
+        </meta>    
+    </property>
+    <property
+        name="teamPlayers"
+        type="java.lang.String"
+        column="team_players"
+        length="65535"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="team_players"
+            length="65535"
+        </meta>    
+    </property>
+    <property
+        name="teamLogo"
+        type="java.lang.String"
+        column="team_logo"
+        length="65535"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="team_logo"
+            length="65535"
+        </meta>    
+    </property>
+    <property
+        name="teamHonors"
+        type="java.lang.String"
+        column="team_honors"
+        length="65535"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="team_honors"
+            length="65535"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional one-to-many association to Scoreinfo -->
+    <set
+        name="scoreinfos"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <meta attribute="field-description">
+           @hibernate.set
+            lazy="true"
+            inverse="true"
+            cascade="none"
+
+           @hibernate.collection-key
+            column="team_id"
+
+           @hibernate.collection-one-to-many
+            class="Hibernate.PO.Scoreinfo"
+        </meta>
+        <key>
+            <column name="team_id" />
+        </key>
+        <one-to-many 
+            class="Hibernate.PO.Scoreinfo"
+        />
+    </set>
+
+</class>
+</hibernate-mapping>

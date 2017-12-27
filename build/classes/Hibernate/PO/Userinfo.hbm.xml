@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+  <!DOCTYPE   hibernate-mapping   
+          PUBLIC   "-//Hibernate/Hibernate   Mapping   DTD//EN"   
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class 
+    name="Hibernate.PO.Userinfo" 
+    table="userinfo"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="userinfo"
+    </meta>
+
+    <id
+        name="userId"
+        type="java.lang.Integer"
+        column="user_id"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="assigned"
+            type="java.lang.Integer"
+            column="user_id"
+
+
+        </meta>
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="userName"
+        type="java.lang.String"
+        column="user_name"
+        not-null="true"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="user_name"
+            length="20"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="userPassword"
+        type="java.lang.String"
+        column="user_password"
+        not-null="true"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="user_password"
+            length="20"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="userAddr"
+        type="java.lang.String"
+        column="user_addr"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="user_addr"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="userEmail"
+        type="java.lang.String"
+        column="user_email"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="user_email"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="userTel"
+        type="java.lang.String"
+        column="user_tel"
+        length="11"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="user_tel"
+            length="11"
+        </meta>    
+    </property>
+    <property
+        name="userAvatar"
+        type="java.lang.String"
+        column="user_avatar"
+        length="65535"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="user_avatar"
+            length="65535"
+        </meta>    
+    </property>
+    <property
+        name="userTruname"
+        type="java.lang.String"
+        column="user_truname"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="user_truname"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="userIntro"
+        type="java.lang.String"
+        column="user_intro"
+        length="65535"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="user_intro"
+            length="65535"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional one-to-many association to Announceinfo -->
+    <set
+        name="announceinfos"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <meta attribute="field-description">
+           @hibernate.set
+            lazy="true"
+            inverse="true"
+            cascade="none"
+
+           @hibernate.collection-key
+            column="user_id"
+
+           @hibernate.collection-one-to-many
+            class="Hibernate.PO.Announceinfo"
+        </meta>
+        <key>
+            <column name="user_id" />
+        </key>
+        <one-to-many 
+            class="Hibernate.PO.Announceinfo"
+        />
+    </set>
+    <!-- bi-directional one-to-many association to Usermessagenew -->
+    <set
+        name="usermessagenews"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <meta attribute="field-description">
+           @hibernate.set
+            lazy="true"
+            inverse="true"
+            cascade="none"
+
+           @hibernate.collection-key
+            column="user_id"
+
+           @hibernate.collection-one-to-many
+            class="Hibernate.PO.Usermessagenew"
+        </meta>
+        <key>
+            <column name="user_id" />
+        </key>
+        <one-to-many 
+            class="Hibernate.PO.Usermessagenew"
+        />
+    </set>
+    <!-- bi-directional one-to-many association to Usercollectnew -->
+    <set
+        name="usercollectnews"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <meta attribute="field-description">
+           @hibernate.set
+            lazy="true"
+            inverse="true"
+            cascade="none"
+
+           @hibernate.collection-key
+            column="user_id"
+
+           @hibernate.collection-one-to-many
+            class="Hibernate.PO.Usercollectnew"
+        </meta>
+        <key>
+            <column name="user_id" />
+        </key>
+        <one-to-many 
+            class="Hibernate.PO.Usercollectnew"
+        />
+    </set>
+
+</class>
+</hibernate-mapping>

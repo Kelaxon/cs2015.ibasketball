@@ -1,0 +1,63 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="AboutAllUsers" extends="struts-default">
+		<action name="AllUsersLoginAction" class="Action.AllUsersLoginAction">
+			<result name="user">/userNewsIndex.jsp</result>
+			<result name="manager">/managerNewsIndex.jsp</result>
+			<result name="input">/userNewsIndex.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+	</package>
+
+	<package name="AboutManager" extends="struts-default">
+		<action name="ManagerCDUNewsAction" class="Action.ManagerCDUNewsAction">
+			<result name="success">/managerNewsIndex.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+		<action name="ManagerCDUMessageAction" class="Action.ManagerCDUMessageAction">
+			<result name="success">/managerMessageIndex.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+		<action name="ManagerCDUserAction" class="Action.ManagerCDUserAction">
+			<result name="success">/managerUsersIndex.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+	</package>
+
+	<package name="AboutUser" extends="struts-default">
+		<action name="UserUInfoAction" class="Action.UserUInfoAction">
+			<result name="success">/userInfoUpdate.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+		<action name="UserCMessageAction" class="Action.UserCMessageAction">
+			<result name="success">/userMessageIndex.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+		<action name="UserCDCollectionAction" class="Action.UserCDCollectionAction">
+			<result name="success">/userCollectionIndex.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+	</package>
+
+<!-- 	<package name="AboutManager" extends="struts-default"> -->
+<!-- 		<action name="ManagerDeleteTeacherAction" class="Action.ManagerDeleteTeacherAction"> -->
+<!-- 			<result name="success">/managerTeacherIndex.jsp</result> -->
+<!-- 			<result name="error">/404.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="ManagerDeleteStudentAction" class="Action.ManagerDeleteStudentAction"> -->
+<!-- 			<result name="success">/managerStudentIndex.jsp</result> -->
+<!-- 			<result name="error">/404.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="ManagerUpdateStateAction" class="Action.ManagerUpdateStateAction"> -->
+<!-- 			<result name="success">/managerStateIndex.jsp</result> -->
+<!-- 			<result name="error">/404.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="ManagerAddFinalChooseAction" class="Action.ManagerAddFinalChooseAction"> -->
+<!-- 			<result name="success">/managerFinalChooseIndex.jsp</result> -->
+<!-- 			<result name="error">/404.jsp</result> -->
+<!-- 		</action> -->
+<!-- 	</package> -->
+</struts>

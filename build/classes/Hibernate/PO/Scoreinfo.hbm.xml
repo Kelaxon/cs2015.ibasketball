@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+  <!DOCTYPE   hibernate-mapping   
+          PUBLIC   "-//Hibernate/Hibernate   Mapping   DTD//EN"   
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+    name="Hibernate.PO.Scoreinfo" 
+    table="scoreinfo"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="scoreinfo"
+    </meta>
+
+    <id
+        name="scoreId"
+        type="java.lang.Integer"
+        column="score_id"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="assigned"
+            type="java.lang.Integer"
+            column="score_id"
+
+
+        </meta>
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="scoreRanking"
+        type="int"
+        column="score_ranking"
+        not-null="true"
+        length="10"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="score_ranking"
+            length="10"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="scoreWins"
+        type="java.lang.Integer"
+        column="score_wins"
+        length="10"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="score_wins"
+            length="10"
+        </meta>    
+    </property>
+    <property
+        name="scoreLoses"
+        type="java.lang.Integer"
+        column="score_loses"
+        length="10"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="score_loses"
+            length="10"
+        </meta>    
+    </property>
+    <property
+        name="scorePpg"
+        type="java.lang.Float"
+        column="score_ppg"
+        length="12"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="score_ppg"
+            length="12"
+        </meta>    
+    </property>
+    <property
+        name="scorePlp"
+        type="java.lang.Float"
+        column="score_plp"
+        length="12"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="score_plp"
+            length="12"
+        </meta>    
+    </property>
+    <property
+        name="scoreTg"
+        type="java.lang.Integer"
+        column="score_tg"
+        length="10"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="score_tg"
+            length="10"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to Teaminfo -->
+    <many-to-one
+        name="teaminfo"
+        class="Hibernate.PO.Teaminfo"
+        not-null="true"
+    >
+        <meta attribute="field-description">
+           @hibernate.many-to-one
+            not-null="true"
+           @hibernate.column name="team_id"         
+        </meta>
+        <column name="team_id" />
+    </many-to-one>
+
+</class>
+</hibernate-mapping>
