@@ -16,13 +16,13 @@
 		<s:property value="#session.currentUserInstance.getUserName()" />
 	</h3>
 
-	<s:form class="form" action="AllUsersLoginAction" method="post">
+	<s:form class="form" action="UsersLoginAction" method="post">
 		<s:textfield name="username" value="lxb" />
 		<s:textfield name="password" value="123456" />
 		<button type="submit">登录</button>
 	</s:form>
-	
-	
+
+
 	<!-- debug:获取数据库内容进行测试按钮 -->
 	<s:form action="DebugAction" method="delete">
 		<s:submit value="Debug" cssClass="btn btn-outline btn-warning btn-sm" />
@@ -40,7 +40,7 @@
 	<a href="userNewsIndex.jsp">资讯首页</a>
 	<a href="userMessageIndex.jsp">查看我的帖子</a>
 	<a href="userInfoIndex.jsp">我的信息</a>
-	<s:url var="logoutUrl" action="AllUsersLogoutAction">
+	<s:url var="logoutUrl" action="UsersLogoutAction">
 		<%-- 		<s:param name="username"> --%>
 		<%-- 			<s:property value="#session.currentUserInstance.getUserName()" /> --%>
 		<%-- 		</s:param> --%>

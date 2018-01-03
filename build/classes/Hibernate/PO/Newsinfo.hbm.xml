@@ -5,161 +5,116 @@
 
 <hibernate-mapping>
 
-<class 
-    name="Hibernate.PO.Newsinfo" 
-    table="newsinfo"
->
-    <meta attribute="class-description" inherit="false">
-       @hibernate.class
-        table="newsinfo"
-    </meta>
+	<class name="Hibernate.PO.Newsinfo" table="newsinfo">
+		<meta attribute="class-description" inherit="false">
+			@hibernate.class
+			table="newsinfo"
+		</meta>
 
-    <id
-        name="newsId"
-        type="java.lang.Integer"
-        column="news_id"
-    >
-        <meta attribute="field-description">
-           @hibernate.id
-            generator-class="assigned"
-            type="java.lang.Integer"
-            column="news_id"
+		<id name="newsId" type="java.lang.Integer" column="news_id">
+			<meta attribute="field-description">
+				@hibernate.id
+				generator-class="assigned"
+				type="java.lang.Integer"
+				column="news_id"
 
 
-        </meta>
-        <generator class="assigned" />
-    </id>
+			</meta>
+			<generator class="assigned" />
+		</id>
 
-    <property
-        name="newsTitle"
-        type="java.lang.String"
-        column="news_title"
-        not-null="true"
-        length="65535"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="news_title"
-            length="65535"
-            not-null="true"
-        </meta>    
-    </property>
-    <property
-        name="newsContent"
-        type="java.lang.String"
-        column="news_content"
-        length="65535"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="news_content"
-            length="65535"
-        </meta>    
-    </property>
-    <property
-        name="newsTime"
-        type="java.sql.Timestamp"
-        column="news_time"
-        length="19"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="news_time"
-            length="19"
-        </meta>    
-    </property>
-    <property
-        name="newsPic"
-        type="java.lang.String"
-        column="news_pic"
-        length="65535"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="news_pic"
-            length="65535"
-        </meta>    
-    </property>
-    <property
-        name="newsCount"
-        type="java.lang.Integer"
-        column="news_count"
-        length="10"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="news_count"
-            length="10"
-        </meta>    
-    </property>
+		<property name="newsTitle" type="java.lang.String" column="news_title"
+			not-null="true" length="65535">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="news_title"
+				length="65535"
+				not-null="true"
+			</meta>
+		</property>
+		<property name="newsContent" type="java.lang.String" column="news_content"
+			length="65535">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="news_content"
+				length="65535"
+			</meta>
+		</property>
+		<property name="newsTime" type="java.sql.Timestamp" column="news_time"
+			length="19">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="news_time"
+				length="19"
+			</meta>
+		</property>
+		<property name="newsPic" type="java.lang.String" column="news_pic"
+			length="65535">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="news_pic"
+				length="65535"
+			</meta>
+		</property>
+		<property name="newsCount" type="java.lang.Integer" column="news_count"
+			length="10">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="news_count"
+				length="10"
+			</meta>
+		</property>
 
-    <!-- Associations -->
-  
-    <!-- bi-directional many-to-one association to Managerinfo -->
-    <many-to-one
-        name="managerinfo"
-        class="Hibernate.PO.Managerinfo"
-        not-null="true"
-    >
-        <meta attribute="field-description">
-           @hibernate.many-to-one
-            not-null="true"
-           @hibernate.column name="mag_id"         
-        </meta>
-        <column name="mag_id" />
-    </many-to-one>
-    <!-- bi-directional one-to-many association to Usermessagenew -->
-    <set
-        name="usermessagenews"
-        lazy="true"
-        inverse="true"
-		cascade="none"
-    >
-        <meta attribute="field-description">
-           @hibernate.set
-            lazy="true"
-            inverse="true"
-            cascade="none"
+		<!-- Associations -->
 
-           @hibernate.collection-key
-            column="news_id"
+		<!-- bi-directional many-to-one association to Managerinfo -->
+		<many-to-one name="managerinfo" class="Hibernate.PO.Managerinfo"
+			not-null="true">
+			<meta attribute="field-description">
+				@hibernate.many-to-one
+				not-null="true"
+				@hibernate.column name="mag_id"
+			</meta>
+			<column name="mag_id" />
+		</many-to-one>
+		<!-- bi-directional one-to-many association to Usermessagenew -->
+		<set name="usermessagenews" lazy="true" inverse="true" cascade="none">
+			<meta attribute="field-description">
+				@hibernate.set
+				lazy="true"
+				inverse="true"
+				cascade="none"
 
-           @hibernate.collection-one-to-many
-            class="Hibernate.PO.Usermessagenew"
-        </meta>
-        <key>
-            <column name="news_id" />
-        </key>
-        <one-to-many 
-            class="Hibernate.PO.Usermessagenew"
-        />
-    </set>
-    <!-- bi-directional one-to-many association to Usercollectnew -->
-    <set
-        name="usercollectnews"
-        lazy="true"
-        inverse="true"
-		cascade="none"
-    >
-        <meta attribute="field-description">
-           @hibernate.set
-            lazy="true"
-            inverse="true"
-            cascade="none"
+				@hibernate.collection-key
+				column="news_id"
 
-           @hibernate.collection-key
-            column="news_id"
+				@hibernate.collection-one-to-many
+				class="Hibernate.PO.Usermessagenew"
+			</meta>
+			<key>
+				<column name="news_id" />
+			</key>
+			<one-to-many class="Hibernate.PO.Usermessagenew" />
+		</set>
+		<!-- bi-directional one-to-many association to Usercollectnew -->
+		<set name="usercollectnews" lazy="true" inverse="true" cascade="none">
+			<meta attribute="field-description">
+				@hibernate.set
+				lazy="true"
+				inverse="true"
+				cascade="none"
 
-           @hibernate.collection-one-to-many
-            class="Hibernate.PO.Usercollectnew"
-        </meta>
-        <key>
-            <column name="news_id" />
-        </key>
-        <one-to-many 
-            class="Hibernate.PO.Usercollectnew"
-        />
-    </set>
+				@hibernate.collection-key
+				column="news_id"
 
-</class>
+				@hibernate.collection-one-to-many
+				class="Hibernate.PO.Usercollectnew"
+			</meta>
+			<key>
+				<column name="news_id" />
+			</key>
+			<one-to-many class="Hibernate.PO.Usercollectnew" />
+		</set>
+
+	</class>
 </hibernate-mapping>

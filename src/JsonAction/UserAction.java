@@ -2,6 +2,10 @@ package JsonAction;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import Hibernate.CDU.FasadeCDU;
@@ -29,6 +33,8 @@ public class UserAction extends ActionSupport {
 		cdu.startConn();
 
 		try {
+			username = "—Ó—Û";
+			password = "123456";
 			cdu.createQuery("from Userinfo u where u.userName=? and u.userPassword=?");
 			cdu.query.setString(0, username);
 			cdu.query.setString(1, password);

@@ -3,39 +3,19 @@ package Action;
 import com.opensymphony.xwork2.ActionSupport;
 
 import Hibernate.CDU.FasadeCDU;
-import Hibernate.PO.Student;
+import Hibernate.PO.Userinfo;
 
 public class UserUInfoAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
-	private String stuPassword;
-	private String stuTel;
-	private String stuIntro;
-	private String stuEmail;
-
-	public String getStuPassword() {
-		return stuPassword;
-	}
-
-	public void setStuPassword(String stuPassword) {
-		this.stuPassword = stuPassword;
-	}
-
-	public String getStuTel() {
-		return stuTel;
-	}
-
-	public void setStuTel(String stuTel) {
-		this.stuTel = stuTel;
-	}
-
-	public String getStuIntro() {
-		return stuIntro;
-	}
-
-	public void setStuIntro(String stuIntro) {
-		this.stuIntro = stuIntro;
-	}
+	private String userPassword;
+	private String userAddr;
+	private String userEmail;
+	private String userTel;
+	private String userAvatar;
+	private String userTruname;
+	private String userIntro;
+	private String message;
 
 	public String execute() throws Exception {
 
@@ -43,15 +23,20 @@ public class UserUInfoAction extends ActionSupport {
 		cdu.startConn();
 
 		try {
-			Student student = (Student) cdu.sessionScope.get("studentInstance");
-			student.setStuIntro(stuIntro);
-			student.setStuEmail(stuEmail);
-
-			if (!(stuPassword != null || stuPassword.trim().equals("")))
-				student.setStuPassword(stuPassword);
+			Userinfo currentUser = (Userinfo) cdu.sessionScope.get("currentUserInstance");
+			Userinfo userinfo = (Userinfo) cdu.session.get(Userinfo.class, currentUser.getUserId());
 			
-			student.setStuTel(stuTel);
-			cdu.session.merge(student);
+			if(!(userPassword==null || userPassword.trim().equals("")))
+				userinfo.setUserPassword(userPassword);
+			
+			userinfo.setUserAddr(userAddr);
+			userinfo.setUserEmail(userEmail);
+			userinfo.setUserTel(userTel);
+			userinfo.setUserAvatar(userAvatar);
+			userinfo.setUserTruname(userTruname);
+			userinfo.setUserIntro(userIntro);
+			
+			
 			String message = "ÐÞ¸Ä³É¹¦£¡";
 			cdu.context.getContext().put("message", message);
 			return SUCCESS;
@@ -63,4 +48,69 @@ public class UserUInfoAction extends ActionSupport {
 		}
 		return ERROR;
 	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getUserPassword() {
+		return userPassword;
+	}
+
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
+	}
+
+	public String getUserAddr() {
+		return userAddr;
+	}
+
+	public void setUserAddr(String userAddr) {
+		this.userAddr = userAddr;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public String getUserTel() {
+		return userTel;
+	}
+
+	public void setUserTel(String userTel) {
+		this.userTel = userTel;
+	}
+
+	public String getUserAvatar() {
+		return userAvatar;
+	}
+
+	public void setUserAvatar(String userAvatar) {
+		this.userAvatar = userAvatar;
+	}
+
+	public String getUserTruname() {
+		return userTruname;
+	}
+
+	public void setUserTruname(String userTruname) {
+		this.userTruname = userTruname;
+	}
+
+	public String getUserIntro() {
+		return userIntro;
+	}
+
+	public void setUserIntro(String userIntro) {
+		this.userIntro = userIntro;
+	}
+
 }

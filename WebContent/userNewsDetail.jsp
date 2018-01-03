@@ -51,7 +51,8 @@
 	<s:form action="UserCMessageAction" method="Create" theme="bootstrap"
 		cssClass="form-inline">
 		<p>
-			<s:hidden name="userId" value="%{#session.currentUserInstance.getUserId()}" />
+			<s:hidden name="userId"
+				value="%{#session.currentUserInstance.getUserId()}" />
 			<s:textarea label="评论" name="messageContent" value="说点什么吧..."
 				cols="30" rows="4">
 			</s:textarea>

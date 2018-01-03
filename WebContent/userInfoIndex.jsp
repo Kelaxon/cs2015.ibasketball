@@ -43,7 +43,8 @@
 	<!-- part2.资讯 -->
 	<H2>我的信息</H2>
 
-	<img src="${currentUserInstance.getUserAvatar()}" class="img-fluid" alt="图片失效">
+	<img src="${currentUserInstance.getUserAvatar()}" class="img-fluid"
+		alt="图片失效">
 	<br> 用户昵称:
 	<s:property value="#session.currentUserInstance.getUserName()" />
 	<br> 用户邮箱:
