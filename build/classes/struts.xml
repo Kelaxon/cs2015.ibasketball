@@ -3,16 +3,52 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+
+	<package name="AboutAndroid" namespace="/" extends="json-default">
+		<action name="UserLoginApp" class="JsonAction.UserAction"
+			method="login">
+			<result type="json">
+				<param name="includeProperties">message, currentUser.*</param>
+			</result>
+		</action>
+		<action name="UserGetNewsApp" class="JsonAction.NewsAction"
+			method="getAll">
+			<result type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="includeProperties">message, newsList.* </param>
+			</result>
+		</action>
+
+
+		<!-- <param name="root">list</param> -->
+		<!-- <param name="excludeNullProperties">true</param> -->
+		<!-- <param name="includeProperties">list.* </param> -->
+		<!-- <param name="excludeProperties">id</param> -->
+
+	</package>
+
 	<package name="AboutAllUsers" extends="struts-default">
 		<action name="DebugAction" class="Action.DebugAction">
 			<result name="input" type="redirect">/200.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
-		<action name="AllUsersLoginAction" class="Action.AllUsersLoginAction">
+		
+		
+		<action name="AllUsersLoginAction" class="Action.AllUsersLoginAction"
+			method="login">
 			<result name="user">/userNewsIndex.jsp</result>
 			<result name="manager">/managerNewsIndex.jsp</result>
 			<result name="input">/userNewsIndex.jsp</result>
 			<result name="error">/404.jsp</result>
+		</action>
+		<action name="AllUsersLogoutAction" class="Action.AllUsersLoginAction"
+			method="logout">
+			<result name="success">/userNewsIndex.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+		
+		<action name="FirstEntryLoadDataAction" class="Action.FirstEntryLoadDataAction">
+			<result name="success">/userNewsIndexload.jsp</result>
 		</action>
 	</package>
 
@@ -64,4 +100,5 @@
 	<!-- <result name="error">/404.jsp</result> -->
 	<!-- </action> -->
 	<!-- </package> -->
+
 </struts>

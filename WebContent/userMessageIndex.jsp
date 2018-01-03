@@ -12,7 +12,7 @@
 
 	<h3>
 		Welcome,用户:
-		<s:property value="#session.userInstance.getUserName()" />
+		<s:property value="#session.currentUserInstance.getUserName()" />
 	</h3>
 
 
@@ -35,7 +35,7 @@
 	<a href="userInfoIndex.jsp">我的信息</a>
 	<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
 		<s:param name="username">
-			<s:property value="#session.userInstance.getUserName()" />
+			<s:property value="#session.currentUserInstance.getUserName()" />
 		</s:param>
 	</s:url>
 	<a href="${logoutUrl}">退出登录</a>
