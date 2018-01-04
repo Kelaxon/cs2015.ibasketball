@@ -22,6 +22,8 @@ public class DebugAction extends ActionSupport {
 		cdu.startConn();
 
 		try {
+			
+
 			cdu.createQuery("from Newsinfo");
 			List<Newsinfo> newsInfoList = cdu.query.list();
 			cdu.sessionScope.put("newsInfoList", newsInfoList);

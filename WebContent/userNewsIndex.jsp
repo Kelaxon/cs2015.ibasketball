@@ -9,8 +9,8 @@
 <title>资讯列表</title>
 </head>
 <body>
-	<s:action name="FirstEntryLoadDataAction" executeResult="true"
-		namespace="/action" />
+<%-- 	<s:action name="FirstEntryLoadDataAction" executeResult="true" --%>
+<%-- 		namespace="/action" /> --%>
 	<h3>
 		Welcome,用户:
 		<s:property value="#session.currentUserInstance.getUserName()" />

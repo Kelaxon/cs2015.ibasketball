@@ -65,11 +65,16 @@
 	</package>
 
 	<package name="AboutUser" extends="struts-default">
-		<action name="UserUInfoAction" class="Action.UserUInfoAction">
+		<action name="UserUpdateInfoAction" class="Action.UserUInfoAction" method="update">
 			<result name="success">/userInfoIndex.jsp</result>
+			<result name="input">/userInfoIndex.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
-		<action name="UserCDMessageAction" class="Action.UserCDMessageAction">
+		<action name="UserCreateMessageAction" class="Action.UserCDMessageAction" method="create">
+			<result name="success">%{currentPage}</result>
+			<result name="error">/404.jsp</result>
+		</action>
+		<action name="UserDeleteMessageAction" class="Action.UserCDMessageAction" method="delete">
 			<result name="success">/userMessageIndex.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>

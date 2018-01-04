@@ -3,7 +3,7 @@ package Hibernate.PO;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Usermessagenew implements Serializable {
+public class Usermessagenew implements Serializable, Comparable<Usermessagenew> {
 	private static final long serialVersionUID = 1L;
 	private int umnId;
 	private Timestamp messageTime;
@@ -11,6 +11,13 @@ public class Usermessagenew implements Serializable {
 	private Newsinfo newsinfo;
 	private Userinfo userinfo;
 
+	@Override
+	public int compareTo(Usermessagenew o) {
+		if (getMessageTime() == null || o.getMessageTime() == null)
+		      return 0;
+		    return getMessageTime().compareTo(o.getMessageTime());
+	}
+	
 	
 	public int getUmnId() {
 		return umnId;

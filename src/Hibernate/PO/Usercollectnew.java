@@ -3,14 +3,22 @@ package Hibernate.PO;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Usercollectnew implements Serializable {
+public class Usercollectnew implements Serializable, Comparable<Usercollectnew> {
 
 	private static final long serialVersionUID = 1L;
 	private int ucnId;
 	private Timestamp collectionTime;
 	private Newsinfo newsinfo;
 	private Userinfo userinfo;
+	
+	@Override
+	public int compareTo(Usercollectnew o) {
+		if (getCollectionTime() == null || o.getCollectionTime() == null)
+		      return 0;
+		    return getCollectionTime().compareTo(o.getCollectionTime());
+	}
 
+	
 	public int getUcnId() {
 		return ucnId;
 	}
@@ -46,5 +54,6 @@ public class Usercollectnew implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 
 }

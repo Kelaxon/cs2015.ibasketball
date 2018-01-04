@@ -17,7 +17,7 @@ public class UserUInfoAction extends ActionSupport {
 	private String userIntro;
 	private String message;
 
-	public String execute() throws Exception {
+	public String update() throws Exception {
 
 		FasadeCDU cdu = new FasadeCDU();
 		cdu.startConn();
@@ -25,10 +25,10 @@ public class UserUInfoAction extends ActionSupport {
 		try {
 			Userinfo currentUser = (Userinfo) cdu.sessionScope.get("currentUserInstance");
 			Userinfo userinfo = (Userinfo) cdu.session.get(Userinfo.class, currentUser.getUserId());
-			
-			if(!(userPassword==null || userPassword.trim().equals("")))
+
+			if (!(userPassword == null || userPassword.trim().equals("")))
 				userinfo.setUserPassword(userPassword);
-			
+
 			userinfo.setUserAddr(userAddr);
 			userinfo.setUserEmail(userEmail);
 			userinfo.setUserTel(userTel);
@@ -36,7 +36,9 @@ public class UserUInfoAction extends ActionSupport {
 			userinfo.setUserTruname(userTruname);
 			userinfo.setUserIntro(userIntro);
 			
-			
+			// 不用save自动会保存
+
+			cdu.sessionScope.put("currentUserInstance", userinfo);
 			String message = "修改成功！";
 			cdu.context.getContext().put("message", message);
 			return SUCCESS;

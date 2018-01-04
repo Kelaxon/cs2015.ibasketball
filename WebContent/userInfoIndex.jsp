@@ -65,7 +65,7 @@
 	<button>修改信息</button>
 
 	<!--模态框的内容 -->
-	<s:form action="UserUInfoAction" method="update" theme="bootstrap">
+	<s:form action="UserUpdateInfoAction" method="post" theme="bootstrap">
 		<s:textfield label="用户昵称" cssClass="form-control" name="userName"
 			value="%{#session.currentUserInstance.getUserName()}" readonly="true" />
 		<img src="${currentUserInstance.getUserAvatar()}" class="img-fluid"
