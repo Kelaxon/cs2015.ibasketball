@@ -34,7 +34,7 @@
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">CBA篮球资讯 &nbsp&nbsp&nbsp&nbsp<small>Welcome,用户:<s:property value="#session.userInstance.getUserName()" /></small></a>
+			<a class="navbar-brand" href="index.html">CBA篮球资讯 &nbsp&nbsp&nbsp&nbsp<small>Welcome,用户:<s:property value="#session.currentUserInstance.getUserName()" /></small></a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -55,7 +55,7 @@
 					</li>
 					<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
 						<s:param name="username">
-							<s:property value="#session.userInstance.getUserName()" />
+							<s:property value="#session.currentUserInstance.getUserName()" />
 						</s:param>
 					</s:url>
 					<li class="nav-item">

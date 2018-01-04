@@ -30,7 +30,7 @@ public class UserCDMessageAction extends ActionSupport {
 		cdu.startConn();
 
 		try {
-			Userinfo currentUser = (Userinfo) cdu.sessionScope.get("currentUserInstance");
+			Userinfo currentUser = (Userinfo) cdu.sessionScope.get("currentcurrentUserInstance");
 			Userinfo userinfo = (Userinfo) cdu.session.get(Userinfo.class, currentUser.getUserId());
 			Newsinfo newsinfo = (Newsinfo) cdu.session.get(Newsinfo.class, newsId);
 

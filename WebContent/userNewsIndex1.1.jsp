@@ -75,10 +75,7 @@
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">CBA篮球资讯
-				&nbsp&nbsp&nbsp&nbsp<small>Welcome,用户:<s:property
-						value="#session.userInstance.getUserName()" /></small>
-			</a>
+			<a class="navbar-brand" href="index.html">CBA篮球资讯 &nbsp&nbsp&nbsp&nbsp<small>Welcome,用户:<s:property value="#session.currentUserInstance.getUserName()" /></small></a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -87,7 +84,6 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
 				
 		
 		
@@ -98,61 +94,42 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="userInfoIndex1.1.jsp">我的信息</a>
 					</li>
-=======
-
-
-
-
-					<li class="nav-item"><a class="nav-link"
-						href="userNewsIndex1.1.jsp">资讯首页</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="userMessageIndex.jsp">查看我的帖子</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="userInfoIndex1.1.jsp">我的信息</a></li>
->>>>>>> branch 'master' of https://github.com/Kelaxon/cs2015.ibasketball.git
 					<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
 						<s:param name="username">
-							<s:property value="#session.userInstance.getUserName()" />
+							<s:property value="#session.currentUserInstance.getUserName()" />
 						</s:param>
 					</s:url>
-					<li class="nav-item"><a class="nav-link" href="${logoutUrl}">退出登录</a></li>
+					<li class="nav-item">
+					<a class="nav-link"  href="${logoutUrl}">退出登录</a></li>
 			</div>
 		</div>
 	</nav>
-
+	
 	<div class="container">
-
-		<!--预留做提示信息 -->
-		<script type="text/javascript">
+	
+	<!--预留做提示信息 -->
+	<script type="text/javascript">
 		var message = "" + '${message}';
 		if (message != "") {
 			alert(message);
 			message = "";
 		}
 	</script>
-		<br>
-		<!-- debug:获取数据库内容进行测试按钮 -->
-		<s:form action="DebugAction" method="delete">
-			<s:submit value="Debug" cssClass="btn btn-outline btn-warning btn-sm" />
-		</s:form>
+	<br>
+	<!-- debug:获取数据库内容进行测试按钮 -->
+	<s:form action="DebugAction" method="delete">
+		<s:submit value="Debug" cssClass="btn btn-outline btn-warning btn-sm" />
+	</s:form>
+	
+	<!-- 导航栏 -->
+	<br>
+	<!-- part2.资讯 -->
 
-<<<<<<< HEAD
 	<div class="row">
 		<!-- Blog Entries Column -->
 			<div class="col-md-8">
 	
-=======
-		<!-- 导航栏 -->
-		<br>
-		<!-- part2.资讯 -->
-
-		<div class="row">
-			<!-- Blog Entries Column -->
-			<div class="col-md-11">
-
->>>>>>> branch 'master' of https://github.com/Kelaxon/cs2015.ibasketball.git
 				<s:iterator value="#session.newsInfoList" var="news" status="st">
-<<<<<<< HEAD
 				<div class="card mb-4">
 				
 	<%-- 				<img src="${news.getNewsPic()}" style="width:300px;height:300px;"  class="card-img-top" alt="图片失效"> --%>
@@ -168,39 +145,17 @@
 								&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 								&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 								<s:property value="#news.getNewsContent()" />
-=======
-					<div class="card mb-4">
-
-						<img src="${news.getNewsPic()}"
-							style="width: 300px; height: 300px;" class="img-fluid" alt="图片失效">
-						<div class="card-body">
-							<h2 class="card-title">
-								<a href="userNewsDetail1.1.jsp?newsId=${news.getNewsId()}">
-									<s:property value="#news.getNewsTitle()" />
-								</a>
-							</h2>
-
-							<s:property value="#news.getNewsContent()" />
-						</div>
-						<div class="card-footer text-muted">
-							<s:property value="#news.getNewsTime()" />
-						</div>
->>>>>>> branch 'master' of https://github.com/Kelaxon/cs2015.ibasketball.git
 					</div>
-<<<<<<< HEAD
 
 				</div>
-=======
->>>>>>> branch 'master' of https://github.com/Kelaxon/cs2015.ibasketball.git
 				</s:iterator>
-
-				<s:debug />
-
+				
+	<s:debug />
+		
 			</div>
 			
 			
 			<!-- Sidebar Widgets Column -->
-<<<<<<< HEAD
 			<div class="col-md-4">
 			
 			
@@ -474,16 +429,13 @@
         </div>
         
         
-=======
-
-		</div>
-		<!-- /.row -->
-
->>>>>>> branch 'master' of https://github.com/Kelaxon/cs2015.ibasketball.git
 	</div>
-	<!-- /.container -->
-
-	<!-- Footer -->
+	<!-- /.row -->
+	
+</div>
+<!-- /.container -->
+	
+<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
 			<p class="m-0 text-center text-white">Copyright &copy; Your
@@ -497,6 +449,6 @@
 		
 	</script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	
 </body>
 </html>

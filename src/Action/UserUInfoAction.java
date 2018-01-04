@@ -23,7 +23,7 @@ public class UserUInfoAction extends ActionSupport {
 		cdu.startConn();
 
 		try {
-			Userinfo currentUser = (Userinfo) cdu.sessionScope.get("currentUserInstance");
+			Userinfo currentUser = (Userinfo) cdu.sessionScope.get("currentcurrentUserInstance");
 			Userinfo userinfo = (Userinfo) cdu.session.get(Userinfo.class, currentUser.getUserId());
 
 			if (!(userPassword == null || userPassword.trim().equals("")))
@@ -38,7 +38,7 @@ public class UserUInfoAction extends ActionSupport {
 			
 			// 不用save自动会保存
 
-			cdu.sessionScope.put("currentUserInstance", userinfo);
+			cdu.sessionScope.put("currentcurrentUserInstance", userinfo);
 			String message = "修改成功！";
 			cdu.context.getContext().put("message", message);
 			return SUCCESS;

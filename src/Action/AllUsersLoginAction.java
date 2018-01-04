@@ -32,7 +32,7 @@ public class AllUsersLoginAction extends ActionSupport {
 
 			if (users.size() == 1) {
 				Userinfo userinfo = (Userinfo) users.get(0);
-				cdu.sessionScope.put("currentUserInstance", userinfo);
+				cdu.sessionScope.put("currentcurrentUserInstance", userinfo);
 				return "user";
 			}
 
@@ -43,7 +43,7 @@ public class AllUsersLoginAction extends ActionSupport {
 			List<Managerinfo> managerUsers = cdu.query.list();
 			if (managerUsers.size() == 1) {
 				Managerinfo managerinfo = managerUsers.get(0);
-				cdu.sessionScope.put("currentUserInstance", managerinfo);
+				cdu.sessionScope.put("currentcurrentUserInstance", managerinfo);
 
 				return "manager";
 			}
@@ -60,7 +60,7 @@ public class AllUsersLoginAction extends ActionSupport {
 		FasadeCDU cdu = new FasadeCDU();
 		cdu.startConn();
 		try {
-			cdu.sessionScope.put("currentUserInstance", null);
+			cdu.sessionScope.put("currentcurrentUserInstance", null);
 			message = "ÄúÒÑÍË³ö";
 			return SUCCESS;
 		} catch (Exception e) {
