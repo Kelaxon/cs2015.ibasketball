@@ -33,13 +33,13 @@ public class DebugAction extends ActionSupport {
 			Managerinfo managerInstance = (Managerinfo) cdu.session.get(Managerinfo.class, "1");
 			cdu.sessionScope.put("managerInstance", managerInstance);
 			
-			Userinfo userInstance = (Userinfo) cdu.session.get(Userinfo.class, 2);
-			cdu.sessionScope.put("userInstance", userInstance);
+			Userinfo currentUserInstance = (Userinfo) cdu.session.get(Userinfo.class, 2);
+			cdu.sessionScope.put("currentUserInstance", currentUserInstance);
 			
-			Set<Usercollectnew> collectionList = userInstance.getUsercollectnews();
+			Set<Usercollectnew> collectionList = currentUserInstance.getUsercollectnews();
 			cdu.sessionScope.put("collectionList", collectionList);
 			
-			Set<Usermessagenew> userMessageList = userInstance.getUsermessagenews();
+			Set<Usermessagenew> userMessageList = currentUserInstance.getUsermessagenews();
 			cdu.sessionScope.put("userMessageList", userMessageList);
 			return INPUT;
 

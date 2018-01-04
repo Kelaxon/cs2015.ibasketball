@@ -5,88 +5,64 @@
 
 <hibernate-mapping>
 
-<class 
-    name="Hibernate.PO.Managerinfo" 
-    table="managerinfo"
->
-    <meta attribute="class-description" inherit="false">
-       @hibernate.class
-        table="managerinfo"
-    </meta>
+	<class name="Hibernate.PO.Managerinfo" table="managerinfo">
+		<meta attribute="class-description" inherit="false">
+			@hibernate.class
+			table="managerinfo"
+		</meta>
 
-    <id
-        name="magId"
-        type="java.lang.String"
-        column="mag_id"
-    >
-        <meta attribute="field-description">
-           @hibernate.id
-            generator-class="assigned"
-            type="java.lang.String"
-            column="mag_id"
+		<id name="magId" type="java.lang.String" column="mag_id">
+			<meta attribute="field-description">
+				@hibernate.id
+				generator-class="assigned"
+				type="java.lang.String"
+				column="mag_id"
 
 
-        </meta>
-        <generator class="assigned" />
-    </id>
+			</meta>
+			<generator class="assigned" />
+		</id>
 
-    <property
-        name="magPassword"
-        type="java.lang.String"
-        column="mag_password"
-        not-null="true"
-        length="20"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="mag_password"
-            length="20"
-            not-null="true"
-        </meta>    
-    </property>
-    <property
-        name="magName"
-        type="java.lang.String"
-        column="mag_name"
-        not-null="true"
-        length="20"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="mag_name"
-            length="20"
-            not-null="true"
-        </meta>    
-    </property>
+		<property name="magPassword" type="java.lang.String" column="mag_password"
+			not-null="true" length="20">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="mag_password"
+				length="20"
+				not-null="true"
+			</meta>
+		</property>
+		<property name="magName" type="java.lang.String" column="mag_name"
+			not-null="true" length="20">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="mag_name"
+				length="20"
+				not-null="true"
+			</meta>
+		</property>
 
-    <!-- Associations -->
-  
-    <!-- bi-directional one-to-many association to Newsinfo -->
-    <set
-        name="newsinfos"
-        lazy="true"
-        inverse="true"
-		cascade="none"
-    >
-        <meta attribute="field-description">
-           @hibernate.set
-            lazy="true"
-            inverse="true"
-            cascade="none"
+		<!-- Associations -->
 
-           @hibernate.collection-key
-            column="mag_id"
+		<!-- bi-directional one-to-many association to Newsinfo -->
+		<set name="newsinfos" lazy="true" inverse="true" cascade="none">
+			<meta attribute="field-description">
+				@hibernate.set
+				lazy="true"
+				inverse="true"
+				cascade="none"
 
-           @hibernate.collection-one-to-many
-            class="Hibernate.PO.Newsinfo"
-        </meta>
-        <key>
-            <column name="mag_id" />
-        </key>
-        <one-to-many 
-            class="Hibernate.PO.Newsinfo"
-        />
-    </set>
+				@hibernate.collection-key
+				column="mag_id"
 
-</class>
+				@hibernate.collection-one-to-many
+				class="Hibernate.PO.Newsinfo"
+			</meta>
+			<key>
+				<column name="mag_id" />
+			</key>
+			<one-to-many class="Hibernate.PO.Newsinfo" />
+		</set>
+
+	</class>
 </hibernate-mapping>

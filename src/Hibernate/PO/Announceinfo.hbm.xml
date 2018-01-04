@@ -5,85 +5,62 @@
 
 <hibernate-mapping>
 
-<class 
-    name="Hibernate.PO.Announceinfo" 
-    table="announceinfo"
->
-    <meta attribute="class-description" inherit="false">
-       @hibernate.class
-        table="announceinfo"
-    </meta>
+	<class name="Hibernate.PO.Announceinfo" table="announceinfo">
+		<meta attribute="class-description" inherit="false">
+			@hibernate.class
+			table="announceinfo"
+		</meta>
 
-    <id
-        name="announceId"
-        type="java.lang.Integer"
-        column="announce_id"
-    >
-        <meta attribute="field-description">
-           @hibernate.id
-            generator-class="assigned"
-            type="java.lang.Integer"
-            column="announce_id"
+		<id name="announceId" type="java.lang.Integer" column="announce_id">
+			<meta attribute="field-description">
+				@hibernate.id
+				generator-class="assigned"
+				type="java.lang.Integer"
+				column="announce_id"
 
 
-        </meta>
-        <generator class="assigned" />
-    </id>
+			</meta>
+			<generator class="assigned" />
+		</id>
 
-    <property
-        name="announceTitle"
-        type="java.lang.String"
-        column="announce_title"
-        not-null="true"
-        length="65535"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="announce_title"
-            length="65535"
-            not-null="true"
-        </meta>    
-    </property>
-    <property
-        name="announceContent"
-        type="java.lang.String"
-        column="announce_content"
-        length="65535"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="announce_content"
-            length="65535"
-        </meta>    
-    </property>
-    <property
-        name="announceTime"
-        type="java.sql.Timestamp"
-        column="announce_time"
-        length="19"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="announce_time"
-            length="19"
-        </meta>    
-    </property>
+		<property name="announceTitle" type="java.lang.String"
+			column="announce_title" not-null="true" length="65535">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="announce_title"
+				length="65535"
+				not-null="true"
+			</meta>
+		</property>
+		<property name="announceContent" type="java.lang.String"
+			column="announce_content" length="65535">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="announce_content"
+				length="65535"
+			</meta>
+		</property>
+		<property name="announceTime" type="java.sql.Timestamp"
+			column="announce_time" length="19">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="announce_time"
+				length="19"
+			</meta>
+		</property>
 
-    <!-- Associations -->
-  
-    <!-- bi-directional many-to-one association to Userinfo -->
-    <many-to-one
-        name="userinfo"
-        class="Hibernate.PO.Userinfo"
-        not-null="true"
-    >
-        <meta attribute="field-description">
-           @hibernate.many-to-one
-            not-null="true"
-           @hibernate.column name="user_id"         
-        </meta>
-        <column name="user_id" />
-    </many-to-one>
+		<!-- Associations -->
 
-</class>
+		<!-- bi-directional many-to-one association to Userinfo -->
+		<many-to-one name="userinfo" class="Hibernate.PO.Userinfo"
+			not-null="true">
+			<meta attribute="field-description">
+				@hibernate.many-to-one
+				not-null="true"
+				@hibernate.column name="user_id"
+			</meta>
+			<column name="user_id" />
+		</many-to-one>
+
+	</class>
 </hibernate-mapping>

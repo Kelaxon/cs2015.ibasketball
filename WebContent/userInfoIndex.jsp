@@ -12,7 +12,7 @@
 
 	<h3>
 		Welcome,用户:
-		<s:property value="#session.userInstance.getUserName()" />
+		<s:property value="#session.currentUserInstance.getUserName()" />
 	</h3>
 
 	<!-- debug:获取数据库内容进行测试按钮 -->
@@ -34,7 +34,7 @@
 	<a href="userInfoIndex.jsp">我的信息</a>
 	<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
 		<s:param name="username">
-			<s:property value="#session.userInstance.getUserName()" />
+			<s:property value="#session.currentUserInstance.getUserName()" />
 		</s:param>
 	</s:url>
 	<a href="${logoutUrl}">退出登录</a>
@@ -43,21 +43,22 @@
 	<!-- part2.资讯 -->
 	<H2>我的信息</H2>
 
-	<img src="${userInstance.getUserAvatar()}" class="img-fluid" alt="图片失效">
+	<img src="${currentUserInstance.getUserAvatar()}" class="img-fluid"
+		alt="图片失效">
 	<br> 用户昵称:
-	<s:property value="#session.userInstance.getUserName()" />
+	<s:property value="#session.currentUserInstance.getUserName()" />
 	<br> 用户邮箱:
-	<s:property value="#session.userInstance.getUserEmail()" />
+	<s:property value="#session.currentUserInstance.getUserEmail()" />
 	<br> 用户住址:
-	<s:property value="#session.userInstance.getUserAddr()" />
+	<s:property value="#session.currentUserInstance.getUserAddr()" />
 	<br> 用户邮箱:
-	<s:property value="#session.userInstance.getUserEmail()" />
+	<s:property value="#session.currentUserInstance.getUserEmail()" />
 	<br> 电话号码:
-	<s:property value="#session.userInstance.getUserTel()" />
+	<s:property value="#session.currentUserInstance.getUserTel()" />
 	<br> 真实姓名:
-	<s:property value="#session.userInstance.getUserTruname()" />
+	<s:property value="#session.currentUserInstance.getUserTruname()" />
 	<br> 个性签名:
-	<s:property value="#session.userInstance.getUserIntro()" />
+	<s:property value="#session.currentUserInstance.getUserIntro()" />
 	<br>
 
 	<!-- 按钮添加模态框 -->
@@ -66,23 +67,23 @@
 	<!--模态框的内容 -->
 	<s:form action="UserUInfoAction" method="update" theme="bootstrap">
 		<s:textfield label="用户昵称" cssClass="form-control" name="userName"
-			value="%{#session.userInstance.getUserName()}" readonly="true" />
-		<img src="${userInstance.getUserAvatar()}" class="img-fluid"
+			value="%{#session.currentUserInstance.getUserName()}" readonly="true" />
+		<img src="${currentUserInstance.getUserAvatar()}" class="img-fluid"
 			alt="图片失效">
 		<s:file label="用户头像" cssClass="form-control" name="userAvatar" />
 		<s:password label="用户密码" cssClass="form-control" name="userPassword" />
 		<s:password label="再次输入密码" cssClass="form-control"
 			name="userPassword1" />
 		<s:textarea label="用户住址" cssClass="form-control" name="userAddr"
-			value="%{#session.userInstance.getUserAddr()}" />
+			value="%{#session.currentUserInstance.getUserAddr()}" />
 		<s:textarea label="用户邮箱" cssClass="form-control" name="userEmail"
-			value="%{#session.userInstance.getUserEmail()}" />
+			value="%{#session.currentUserInstance.getUserEmail()}" />
 		<s:textarea label="电话号码" cssClass="form-control" name="userTel"
-			value="%{#session.userInstance.getUserTel()}" />
+			value="%{#session.currentUserInstance.getUserTel()}" />
 		<s:textarea label="真实姓名" cssClass="form-control" name="userTruname"
-			value="%{#session.userInstance.getUserTruname()}" />
+			value="%{#session.currentUserInstance.getUserTruname()}" />
 		<s:textarea label="个性签名" cssClass="form-control" name="userIntro"
-			value="%{#session.userInstance.getUserIntro()}" />
+			value="%{#session.currentUserInstance.getUserIntro()}" />
 		<s:submit value="修改" cssClass="btn btn-outline btn-primary btn-sm" />
 	</s:form>
 	<s:debug />

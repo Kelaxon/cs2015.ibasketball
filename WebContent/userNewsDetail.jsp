@@ -13,7 +13,7 @@
 <body>
 	<h3>
 		Welcome,用户:
-		<s:property value="#session.userInstance.getUserName()" />
+		<s:property value="#session.currentUserInstance.getUserName()" />
 	</h3>
 	<!-- part0.导航 -->
 	<a href="userNewsIndex.jsp">资讯首页</a>
@@ -21,7 +21,7 @@
 	<a href="userInfoIndex.jsp">我的信息</a>
 	<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
 		<s:param name="username">
-			<s:property value="#session.userInstance.getUserName()" />
+			<s:property value="#session.currentUserInstance.getUserName()" />
 		</s:param>
 	</s:url>
 	<a href="${logoutUrl}">退出登录</a>
@@ -32,7 +32,6 @@
 		int newsid = 1;
 		if (id != null)
 			newsid = Integer.parseInt(id);
-		newsid--;
 		List<Newsinfo> newsInfoList = (List<Newsinfo>) session.getAttribute("newsInfoList");
 		Newsinfo news = newsInfoList.get(newsid);
 	%>
@@ -52,7 +51,8 @@
 	<s:form action="UserCMessageAction" method="Create" theme="bootstrap"
 		cssClass="form-inline">
 		<p>
-			<s:hidden name="userId" value="%{#session.userInstance.getUserId()}" />
+			<s:hidden name="userId"
+				value="%{#session.currentUserInstance.getUserId()}" />
 			<s:textarea label="评论" name="messageContent" value="说点什么吧..."
 				cols="30" rows="4">
 			</s:textarea>
