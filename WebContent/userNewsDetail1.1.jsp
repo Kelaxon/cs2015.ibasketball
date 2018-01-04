@@ -44,7 +44,7 @@
 		
 					<li class="nav-item"><a class="nav-link" href="userNewsIndex1.1.jsp">资讯首页</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="userMessageIndex.jsp">查看我的帖子</a>
+					<li class="nav-item"><a class="nav-link" href="userMessageIndex1.1.jsp">查看我的帖子</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="userInfoIndex1.1.jsp">我的信息</a>
 					</li>
@@ -72,7 +72,7 @@
  	<!-- 新闻资讯 -->
  	
  	<!-- Post Content Column -->
-        <div class="col-lg-12">
+        <div class="col-lg-8">
  
 	<%
 		String id = request.getParameter("newsId");
@@ -86,17 +86,16 @@
 	<h2>
 		<%=news.getNewsTitle()%>
 	</h2>
-	<p>
-		发布时间:
-		<%=news.getNewsTime()%>
-	</p>
+
+	<!-- Author -->
+          <p class="lead">
+            	发布时间:
+            <a href="#"><%=news.getNewsTime()%></a>
+          </p>
 	<hr>
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	<img src="<%=news.getNewsPic()%>" class="img-fluid" alt="图片失效" style="width:650px;height:650px;">
+	<%-- <img src="<%=news.getNewsPic()%>" class="img-fluid" alt="图片失效" > --%>
+	<img src="https://mybookie.ag/wp-content/uploads/usa-vs-australia-basketball-pick-rio-2016-900x300.jpg" class="img-fluid" alt="图片失效" >
+	
 	<hr>
 	<p>
 	<font size="3" >
@@ -115,7 +114,7 @@
                 <div class="form-group">
                 <s:hidden name="userId" value="%{#session.userInstance.getUserId()}" />
                 <s:textarea name="messageContent" value="说点什么吧..." 
-				cols="80" rows="4">
+				cols="70" rows="4">
 				</s:textarea>
                 </div>
                 <hr>
@@ -152,6 +151,70 @@
 	<s:debug />
 	
 	</div>
+	
+	
+	 <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+          <!-- Search Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Search</h5>
+            <div class="card-body">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#">Web Design</a>
+                    </li>
+                    <li>
+                      <a href="#">HTML</a>
+                    </li>
+                    <li>
+                      <a href="#">Freebies</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#">JavaScript</a>
+                    </li>
+                    <li>
+                      <a href="#">CSS</a>
+                    </li>
+                    <li>
+                      <a href="#">Tutorials</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+
+        </div>
+	
+	
 	</div>
       <!-- /.row -->
       
