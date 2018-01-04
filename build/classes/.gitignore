@@ -1,6 +1,11 @@
 /Action/
 /Hibernate/
 /JsonAction/
+<<<<<<< HEAD
 /hibernate.cfg.xml
 /log4j.properties
 /struts.xml
+=======
+/Action/
+/Hibernate/
+>>>>>>> 1534ddb4c2bb2b7268ee71873625b62c64511948

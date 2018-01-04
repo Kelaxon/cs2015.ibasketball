@@ -48,6 +48,18 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
+<<<<<<< HEAD
+				
+		
+		
+		
+					<li class="nav-item"><a class="nav-link" href="userNewsIndex1.1.jsp">资讯首页</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="userMessageIndex1.1.jsp">查看我的帖子</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="userInfoIndex1.1.jsp">我的信息</a>
+					</li>
+=======
 
 
 
@@ -58,6 +70,7 @@
 						href="userMessageIndex.jsp">查看我的帖子</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="userInfoIndex1.1.jsp">我的信息</a></li>
+>>>>>>> branch 'master' of https://github.com/Kelaxon/cs2015.ibasketball.git
 					<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
 						<s:param name="username">
 							<s:property value="#session.userInstance.getUserName()" />
@@ -103,6 +116,46 @@
 				<!-- Embedded Google Map -->
 				<!-- <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
   		  -->
+<<<<<<< HEAD
+  		   <<%-- img src="${userInstance.getUserAvatar()}" class="img-fluid" alt="图片失效"> --%>
+        	<img src="http://www.queroapostar.com/wp-content/uploads/2017/04/bn-playoffs-nba-2017-750x340.jpg">
+        </div>
+        <!-- Contact Details Column -->
+        <div class="col-lg-4 mb-4">
+          <h3>我的信息</h3>
+          <br>
+          <p>
+            	用户昵称:
+			<s:property value="#session.userInstance.getUserName()" />
+          </p>
+          <p>
+            	 用户邮箱:
+			<s:property value="#session.userInstance.getUserEmail()" />
+          </p>
+          <p>
+            	 用户住址:
+			<s:property value="#session.userInstance.getUserAddr()" />
+          </p>
+          <p>
+			             用户邮箱:
+				<s:property value="#session.userInstance.getUserEmail()" />
+          </p>
+           <p>
+			         电话号码:
+				<s:property value="#session.userInstance.getUserTel()" />
+          </p>
+          <p>
+			         真实姓名:
+				<s:property value="#session.userInstance.getUserTruname()" />
+          </p>
+          <p>
+			        我的签名:
+				<s:property value="#session.userInstance.getUserIntro()" />
+          </p>
+        </div>
+      </div>
+      <!-- /.row -->
+=======
 				<img src="${userInstance.getUserAvatar()}" class="img-fluid"
 					alt="图片失效">
 			</div>
@@ -141,6 +194,7 @@
 			</div>
 		</div>
 		<!-- /.row -->
+>>>>>>> branch 'master' of https://github.com/Kelaxon/cs2015.ibasketball.git
 
 
 		<!-- 按钮添加模态框 -->
@@ -165,8 +219,7 @@
 						<div class="modal-body">
 							<s:textfield label="用户昵称" cssClass="form-control" name="userName"
 								value="%{#session.userInstance.getUserName()}" readonly="true" />
-							<img src="${userInstance.getUserAvatar()}" class="img-fluid"
-								alt="图片失效">
+							<img src="https://unruly.co/wp-content/uploads/2014/11/Lebron-James-Nike-750x300.png">
 							<hr>
 							<s:file label="用户头像" cssClass="form-control" name="userAvatar" />
 							<s:password label="用户密码" cssClass="form-control"
