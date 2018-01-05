@@ -10,6 +10,6 @@
 <sb:head />
 <body>
 	<H2>你来到了没有知识的荒原！</H2>
-	<a href="login.jsp">返回首页</a>
+	<a href="index.jsp">返回首页</a>
 </body>
 </html>

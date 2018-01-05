@@ -23,7 +23,7 @@
 
 	<!--预留做提示信息 -->
 	<script type="text/javascript">
-		var message = "" + '${message}';
+		var message = "" + '${infoMessage}';
 		if (message != "") {
 			alert(message);
 			message = "";
@@ -33,7 +33,7 @@
 	<a href="userNewsIndex.jsp">资讯首页</a>
 	<a href="userMessageIndex.jsp">查看我的帖子</a>
 	<a href="userInfoIndex.jsp">我的信息</a>
-	<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
+	<s:url var="logoutUrl" action="LoginAction" method="logout">
 		<s:param name="username">
 			<s:property value="#session.currentcurrentUserInstance.getUserName()" />
 		</s:param>

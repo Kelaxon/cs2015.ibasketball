@@ -4,14 +4,16 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import Hibernate.CDU.FasadeCDU;
+import Component.FasadeCDU;
 import Hibernate.PO.Newsinfo;
+import Hibernate.PO.Usermessagenew;
 
 public class NewsAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 
 	private List<Newsinfo> newsList;
+	private List<Usermessagenew> messageList;
 	private String message;
 
 	public String getAll() {

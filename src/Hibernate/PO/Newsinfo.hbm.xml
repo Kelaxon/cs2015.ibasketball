@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-  <!DOCTYPE   hibernate-mapping   
-          PUBLIC   "-//Hibernate/Hibernate   Mapping   DTD//EN"   
-          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
 
@@ -78,10 +78,10 @@
 			<column name="mag_id" />
 		</many-to-one>
 		<!-- bi-directional one-to-many association to Usermessagenew -->
-		<set name="usermessagenews" lazy="false" inverse="true" cascade="none">
+		<set name="usermessagenews" lazy="true" inverse="true" cascade="none">
 			<meta attribute="field-description">
 				@hibernate.set
-				lazy="false"
+				lazy="true"
 				inverse="true"
 				cascade="none"
 
@@ -97,10 +97,10 @@
 			<one-to-many class="Hibernate.PO.Usermessagenew" />
 		</set>
 		<!-- bi-directional one-to-many association to Usercollectnew -->
-		<set name="usercollectnews" lazy="false" inverse="true" cascade="none">
+		<set name="usercollectnews" lazy="true" inverse="true" cascade="none">
 			<meta attribute="field-description">
 				@hibernate.set
-				lazy="false"
+				lazy="true"
 				inverse="true"
 				cascade="none"
 

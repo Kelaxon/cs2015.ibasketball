@@ -17,65 +17,48 @@
 <body>
 	<!--预留做提示信息 -->
 	<script type="text/javascript">
-		var message = "" + '${message}';
+		var message = "" + '${infoMessage}';
 		if (message != "") {
 			alert(message);
 			message = "";
 		}
 	</script>
-	
+
 	<h3>
 		Welcome,用户:
-		<s:property value="#session.currentcurrentUserInstance.getUserName()" />
+		<s:property value="#session.currentUserInstance.getUserName()" />
 	</h3>
 
-
-
 	<!-- part0.导航 -->
-	<a href="userNewsIndex.jsp">资讯首页</a>
-	<a href="userMessageIndex.jsp">查看我的帖子</a>
-	<a href="userInfoIndex.jsp">我的信息</a>
-	<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
-		<s:param name="username">
-			<s:property value="#session.currentcurrentUserInstance.getUserName()" />
-		</s:param>
+	<s:url id="newsURL" action="listNewsAllUser" />
+	<s:url id="messagesURL" action="listMessageById" />
+	<s:url id="userURL" action="listUserById" />
+	<s:url id="logoutUrl" action="logout">
 	</s:url>
-	<a href="${logoutUrl}">退出登录</a>
+
+	<s:a href="%{newsURL}">资讯首页</s:a>
+	<s:a href="%{messagesURL}">查看我的帖子</s:a>
+	<s:a href="%{userURL}">我的信息</s:a>
+	<s:a href="%{logoutUrl}">退出登录</s:a>
 
 
-	<%
-		String id = request.getParameter("newsId");
-		int newsid = 1;
-		if (id != null)
-			newsid = Integer.parseInt(id);
-		List<Newsinfo> newsInfoList = (List<Newsinfo>) session.getAttribute("newsInfoList");
-		Newsinfo news = newsInfoList.get(newsid);
-		
-		// request范围
-		request.setAttribute("news", news);
-		List<Usermessagenew>messages = new ArrayList();
-		messages.addAll(news.getUsermessagenews());
-		// 留言按时间排序
-		Collections.sort(messages);
-		request.setAttribute("messages", messages);
-	%>
+	<!-- 新闻详情 -->
 	<h2>
-		<s:property value="#request.news.getNewsTitle()" />
+		<s:property value="newsinfo.getNewsTitle()" />
 	</h2>
 
 	<p>
 		发布时间:
-		<s:property value="#request.news.getNewsTime()" />
+		<s:property value="newsinfo.getNewsTime()" />
 
 	</p>
-	<img src="<s:property value="#request.news.getNewsPic()"/>"
+	<img src="<s:property value="newsinfo.getNewsPic()"/>"
 		class="img-fluid" alt="图片失效">
 	<p>
-		<s:property value="#request.news.getNewsContent()" />
+		<s:property value="newsinfo.getNewsContent()" />
 	<p>
 	<H5>所有评论</H5>
-	<s:iterator value="#request.messages" var="message"
-		status="st">
+	<s:iterator value="messageList" var="message" status="st">
 		用户:<s:property value="#message.getUserinfo().getUserName()" />
 		<br>
 		留言：<s:property value="#message.getMessageContent()" />
@@ -86,18 +69,17 @@
 
 
 	<H5>提交评论</H5>
-	<s:form action="UserCreateMessageAction" method="post"
-		theme="bootstrap" cssClass="form-inline">
+	<s:form action="addMessage" method="post" theme="bootstrap"
+		cssClass="form-inline">
 		<p>
-			<s:hidden name="newsId" value="%{#request.news.getNewsId()}" />
+			<s:hidden name="newsId" value="%{newsinfo.getNewsId()}" />
 			<s:textarea label="评论" name="messageContent" value="说点什么吧..."
 				cols="30" rows="4">
 			</s:textarea>
 		</p>
 		<s:submit value="提交" cssClass="btn" />
 	</s:form>
-	<a href="userNewsIndex.jsp">返回首页</a>
-	<a href="javascript:history.back()">返回上页</a>
+
 	<s:debug />
 
 </body>

@@ -8,7 +8,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import Hibernate.CDU.FasadeCDU;
+import Component.FasadeCDU;
 import Hibernate.PO.Userinfo;
 
 public class UserAction extends ActionSupport {

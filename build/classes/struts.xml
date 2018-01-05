@@ -3,12 +3,15 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+
+	<!-- //////// 安卓客户端接口 //////// -->
 	<package name="AboutAndroid" namespace="/" extends="json-default">
 
 		<action name="UserActionApp" class="JsonAction.UserAction"
 			method="login">
 			<result type="json">
-				<param name="includeProperties">message, currentUser.*</param>
+				<param name="includeProperties">
+					currentUser.*</param>
 			</result>
 		</action>
 		<action name="UserGetNewsApp" class="JsonAction.NewsAction"
@@ -24,85 +27,151 @@
 
 	</package>
 
-	<package name="AboutAllUsers" extends="struts-default">
-		<action name="DebugAction" class="Action.DebugAction">
-			<result name="input" type="redirect">/200.jsp</result>
-			<result name="error">/404.jsp</result>
-		</action>
+	<!-- //////// 新闻管理 //////// -->
+	<package name="AboutNews" extends="struts-default">
 
-		<action name="UsersLoginAction" class="Action.AllUsersLoginAction"
-			method="login">
-			<result name="user">/userNewsIndex.jsp</result>
-			<result name="manager">/managerNewsIndex.jsp</result>
-			<result name="input">/userNewsIndex.jsp</result>
-			<result name="error">/404.jsp</result>
-		</action>
-		<action name="UsersLogoutAction" class="Action.AllUsersLoginAction"
-			method="logout">
+		<!-- 刷新全部 -->
+		<action name="listNewsAllUser" class="Action.NewsAction"
+			method="listAll">
 			<result name="success">/userNewsIndex.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
-
-		<action name="FirstEntryLoadDataAction" class="Action.FirstEntryLoadDataAction">
-			<result name="success">/userNewsIndexload.jsp</result>
-		</action>
-	</package>
-
-	<package name="AboutManager" extends="struts-default">
-		<action name="ManagerCDUNewsAction" class="Action.ManagerCDUNewsAction">
+		<action name="listNewsAllManager" class="Action.NewsAction"
+			method="listAll">
 			<result name="success">/managerNewsIndex.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
-		<action name="ManagerDeleteMessageAction" class="Action.ManagerDMessageAction"
-			method="delete">
+
+		<!-- 刷新单个 -->
+		<action name="listNewsById" class="Action.NewsAction" method="listById">
+			<result name="success">/userNewsDetail.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+
+		<!-- 添加单个 -->
+		<action name="addNews" class="Action.NewsAction" method="add">
+			<!-- 添加后要刷新 -->
+			<result name="success" type="redirectAction">
+				<param name="actionName">listNewsAllManager</param>
+			</result>
+			<result name="error">/404.jsp</result>
+		</action>
+
+		<!-- 删除单个 -->
+		<action name="deleteNews" class="Action.NewsAction" method="delete">
+			<!-- 添加后要刷新 -->
+			<result name="success" type="redirectAction">
+				<param name="actionName">listNewsAllManager</param>
+			</result>
+			<result name="error">/404.jsp</result>
+		</action>
+
+		<!-- 更新新闻 -->
+		<action name="updateNews" class="Action.NewsAction" method="update">
+			<result name="success">/managerNewsIndex.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+	</package>
+
+
+	<!-- //////// 留言管理 //////// -->
+	<package name="AboutMessages" extends="struts-default">
+		<!-- 刷新全部 -->
+		<action name="listMessageAll" class="Action.MessageAction"
+			method="listAll">
 			<result name="success">/managerMessageIndex.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
-		<action name="ManagerCDUserAction" class="Action.ManagerCDUserAction">
+
+		<!-- 刷新单个用户的全部 -->
+		<action name="listMessageById" class="Action.MessageAction"
+			method="listById">
+			<result name="success">/userMessageIndex.jsp</result>
+			<result name="error">/userNewsIndex.jsp</result>
+		</action>
+
+		<!-- 添加单个 -->
+		<action name="addMessage" class="Action.MessageAction" method="add">
+			<!-- 添加后要刷新 -->
+			<result name="success" type="redirect">listMessageById</result>
+			<result name="error">/404.jsp</result>
+		</action>
+
+		<!-- 删除单个 -->
+		<action name="deleteMessage" class="Action.MessageAction"
+			method="delete">
+			<!-- 删除后要刷新 -->
+			<result name="success" type="redirect">listMessageById</result>
+			<!-- <result name="success" type="redirectAction"> -->
+			<!-- <param name="actionName">listMessageById</param> -->
+			<!-- <param name="userId">${userId}</param> -->
+			<!-- </result> -->
+			<result name="error">/404.jsp</result>
+		</action>
+	</package>
+
+	<!-- //////// 用户管理 //////// -->
+	<package name="AboutUsers" extends="struts-default">
+		<!-- 用户管理 -->
+		<action name="addUser" class="Action.UserAction" method="add">
 			<result name="success">/managerUsersIndex.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
-	</package>
-
-	<package name="AboutUser" extends="struts-default">
-		<action name="UserUpdateInfoAction" class="Action.UserUInfoAction" method="update">
+		<action name="updateUser" class="Action.UserAction" method="update">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+				<param name="allowedTypes">
+					image/png,image/gif,image/jpeg,image/pjpeg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="redirect">listUserById</result>
+			<result name="input" type="redirect">listUserById</result>
+			<result name="error">/404.jsp</result>
+		</action>
+		<action name="deleteUser" class="Action.UserAction" method="delete">
+			<result name="success">/managerUsersIndex.jsp</result>
+			<result name="error">/404.jsp</result>
+		</action>
+		<action name="listUserById" class="Action.UserAction" method="listById">
 			<result name="success">/userInfoIndex.jsp</result>
-			<result name="input">/userInfoIndex.jsp</result>
+			<result name="error">/userNewsIndex.jsp</result>
+		</action>
+
+		<action name="DebugAction" class="Action.DebugAction" method="debug">
+			<result name="input" type="redirect">/index.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
-		<action name="UserCreateMessageAction" class="Action.UserCDMessageAction" method="create">
-			<result name="success">%{currentPage}</result>
+
+		<action name="upload" class="Action.DebugAction" method="uploadTest">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+				<param name="allowedTypes">
+					image/png,image/gif,image/jpeg,image/pjpeg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">/0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
-		<action name="UserDeleteMessageAction" class="Action.UserCDMessageAction" method="delete">
-			<result name="success">/userMessageIndex.jsp</result>
+
+		<action name="login" class="Action.LoginAction" method="login">
+			<result name="user">/index.jsp</result>
+			<result name="manager" type="redirectAction">
+				<param name="actionName">listNewsAllManager</param>
+			</result>
+			<result name="input">/userNewsIndex.jsp</result>
+			<result name="error">/userNewsIndex.jsp</result>
+		</action>
+		<action name="logout" class="Action.LoginAction" method="logout">
+			<result name="success">/index.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
-		<action name="UserCDCollectionAction" class="Action.UserCDCollectionAction">
-			<result name="success">/userCollectionIndex.jsp</result>
+		<action name="register" class="Action.LoginAction" method="register">
+			<result name="success">/index.jsp</result>
+			<result name="input">/userNewsIndex</result>
 			<result name="error">/404.jsp</result>
 		</action>
 	</package>
-
-	<!-- <package name="AboutManager" extends="struts-default"> -->
-	<!-- <action name="ManagerDeleteTeacherAction" class="Action.ManagerDeleteTeacherAction"> -->
-	<!-- <result name="success">/managerTeacherIndex.jsp</result> -->
-	<!-- <result name="error">/404.jsp</result> -->
-	<!-- </action> -->
-	<!-- <action name="ManagerDeleteStudentAction" class="Action.ManagerDeleteStudentAction"> -->
-	<!-- <result name="success">/managerStudentIndex.jsp</result> -->
-	<!-- <result name="error">/404.jsp</result> -->
-	<!-- </action> -->
-	<!-- <action name="ManagerUpdateStateAction" class="Action.ManagerUpdateStateAction"> -->
-	<!-- <result name="success">/managerStateIndex.jsp</result> -->
-	<!-- <result name="error">/404.jsp</result> -->
-	<!-- </action> -->
-	<!-- <action name="ManagerAddFinalChooseAction" class="Action.ManagerAddFinalChooseAction"> -->
-	<!-- <result name="success">/managerFinalChooseIndex.jsp</result> -->
-	<!-- <result name="error">/404.jsp</result> -->
-	<!-- </action> -->
-	<!-- </package> -->
 
 </struts>
-
-

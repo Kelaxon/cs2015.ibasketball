@@ -9,17 +9,45 @@
 <title>资讯列表</title>
 </head>
 <body>
-<%-- 	<s:action name="FirstEntryLoadDataAction" executeResult="true" --%>
-<%-- 		namespace="/action" /> --%>
-	<h3>
-		Welcome,用户:
-		<s:property value="#session.currentcurrentUserInstance.getUserName()" />
-	</h3>
 
-	<s:form class="form" action="UsersLoginAction" method="post">
-		<s:textfield name="username" value="lxb" />
+	<!-- 预留做提示信息 -->
+	<script type="text/javascript">
+		var message = "" + "<s:property value='infoMessage'/>";
+		if (message != "") {
+			alert(message);
+			message = "";
+		}
+	</script>
+
+
+
+	Welcome:
+	<s:property value="#session.currentUserInstance.getUserName()" />
+
+	<h5>登陆</h5>
+	<!-- 登陆表单 -->
+	<s:form class="form" action="login" method="post">
+		<s:textfield name="username" value="杨洋" />
 		<s:textfield name="password" value="123456" />
 		<button type="submit">登录</button>
+	</s:form>
+
+	<!-- 注册表单 -->
+	<h5>注册</h5>
+	<s:form action="register" method="post" theme="bootstrap">
+		<s:hidden name="userId" />
+		<s:textfield label="用户昵称" cssClass="form-control" name="userName" />
+		<img src="${userAvatar}" class="img-fluid" alt="图片失效">
+		<s:file label="用户头像" cssClass="form-control" name="userAvatar" />
+		<s:password label="用户密码" cssClass="form-control" name="userPassword" />
+		<s:password label="再次输入密码" cssClass="form-control"
+			name="userPassword1" />
+		<s:textarea label="用户住址" cssClass="form-control" name="userAddr" />
+		<s:textarea label="用户邮箱" cssClass="form-control" name="userEmail" />
+		<s:textarea label="电话号码" cssClass="form-control" name="userTel" />
+		<s:textarea label="真实姓名" cssClass="form-control" name="userTruname" />
+		<s:textarea label="个性签名" cssClass="form-control" name="userIntro" />
+		<s:submit value="注册" cssClass="btn btn-outline btn-primary btn-sm" />
 	</s:form>
 
 
@@ -28,34 +56,40 @@
 		<s:submit value="Debug" cssClass="btn btn-outline btn-warning btn-sm" />
 	</s:form>
 
-	<!--预留做提示信息 -->
-	<script type="text/javascript">
-		var message = "" + '${message}';
-		if (message != "") {
-			alert(message);
-			message = "";
-		}
-	</script>
+
+
 	<!-- part0.导航 -->
-	<a href="userNewsIndex.jsp">资讯首页</a>
-	<a href="userMessageIndex.jsp">查看我的帖子</a>
-	<a href="userInfoIndex.jsp">我的信息</a>
-	<s:url var="logoutUrl" action="UsersLogoutAction">
-		<%-- 		<s:param name="username"> --%>
-		<%-- 			<s:property value="#session.currentcurrentUserInstance.getUserName()" /> --%>
-		<%-- 		</s:param> --%>
+	<s:url id="newsURL" action="listNewsAllUser" />
+	<s:url id="messagesURL" action="listMessageById" />
+	<s:url id="userURL" action="listUserById" />
+	<s:url id="logoutUrl" action="logout">
 	</s:url>
-	<a href="${logoutUrl}">退出登录</a>
+
+	<s:a href="%{newsURL}">资讯首页</s:a>
+	<s:a href="%{messagesURL}">查看我的帖子</s:a>
+	<s:a href="%{userURL}">我的信息</s:a>
+	<s:a href="%{logoutUrl}">退出登录</s:a>
 	<s:fielderror />
+
+
 	<!-- part2.资讯 -->
 	<H2>比赛资讯</H2>
 
-	<s:iterator value="#session.newsInfoList" var="news" status="st">
+	<s:iterator value="newsInfoList" var="news" status="st">
 		<img src="${news.getNewsPic()}" class="img-fluid" alt="图片失效">
 		<br>
-		<a href="userNewsDetail.jsp?newsId=${st.index}"><s:property
-				value="#news.getNewsTitle()" /></a>
+
+
+		<!-- 新闻标题 -->
+		<s:url id="certainNewsURL" action="listNewsById">
+			<s:param name="newsId" value="%{#news.getNewsId()}" />
+		</s:url>
+		<s:a href="%{certainNewsURL}">
+			<s:property value="#news.getNewsTitle()" />
+		</s:a>
 		<br>
+
+		<!-- 新闻时间 -->
 		<s:property value="#news.getNewsTime()" />
 		<br>
 		<s:property value="#news.getNewsContent()" />

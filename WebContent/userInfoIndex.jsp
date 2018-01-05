@@ -9,10 +9,18 @@
 <title>用户列表</title>
 </head>
 <body>
+	<!--预留做提示信息 -->
+	<script type="text/javascript">
+		var message = "" + '${infoMessage}';
+		if (message != "") {
+			alert(message);
+			message = "";
+		}
+	</script>
 
 	<h3>
 		Welcome,用户:
-		<s:property value="#session.currentcurrentUserInstance.getUserName()" />
+		<s:property value="#session.currentUserInstance.getUserName()" />
 	</h3>
 
 	<!-- debug:获取数据库内容进行测试按钮 -->
@@ -20,72 +28,60 @@
 		<s:submit value="Debug" cssClass="btn btn-outline btn-warning btn-sm" />
 	</s:form>
 
-	<!--预留做提示信息 -->
-	<script type="text/javascript">
-		var message = "" + '${message}';
-		if (message != "") {
-			alert(message);
-			message = "";
-		}
-	</script>
-	<!-- part0.导航栏 -->
-	<a href="userNewsIndex.jsp">资讯首页</a>
-	<a href="userMessageIndex.jsp">查看我的帖子</a>
-	<a href="userInfoIndex.jsp">我的信息</a>
-	<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
-		<s:param name="username">
-			<s:property value="#session.currentcurrentUserInstance.getUserName()" />
-		</s:param>
+
+	<!-- part0.导航 -->
+	<s:url id="newsURL" action="listNewsAllUser" />
+	<s:url id="messagesURL" action="listMessageById" />
+	<s:url id="userURL" action="listUserById" />
+	<s:url id="logoutUrl" action="logout">
 	</s:url>
-	<a href="${logoutUrl}">退出登录</a>
+
+	<s:a href="%{newsURL}">资讯首页</s:a>
+	<s:a href="%{messagesURL}">查看我的帖子</s:a>
+	<s:a href="%{userURL}">我的信息</s:a>
+	<s:a href="%{logoutUrl}">退出登录</s:a>
 
 
 	<!-- part2.资讯 -->
 	<H2>我的信息</H2>
-
-	<img src="${currentcurrentUserInstance.getUserAvatar()}" class="img-fluid"
-		alt="图片失效">
-	<br> 用户昵称:
-	<s:property value="#session.currentcurrentUserInstance.getUserName()" />
-	<br> 用户邮箱:
-	<s:property value="#session.currentcurrentUserInstance.getUserEmail()" />
-	<br> 用户住址:
-	<s:property value="#session.currentcurrentUserInstance.getUserAddr()" />
-	<br> 用户邮箱:
-	<s:property value="#session.currentcurrentUserInstance.getUserEmail()" />
-	<br> 电话号码:
-	<s:property value="#session.currentcurrentUserInstance.getUserTel()" />
-	<br> 真实姓名:
-	<s:property value="#session.currentcurrentUserInstance.getUserTruname()" />
-	<br> 个性签名:
-	<s:property value="#session.currentcurrentUserInstance.getUserIntro()" />
-	<br>
-
+	<s:push value="userinfo">
+		<img src="${userAvatar}" class="img-fluid" alt="图片失效">
+		<br> 用户昵称:
+	<s:property value="userName" />
+		<br> 用户邮箱:
+	<s:property value="userEmail" />
+		<br> 用户住址:
+	<s:property value="userAddr" />
+		<br> 电话号码:
+	<s:property value="userTel" />
+		<br> 真实姓名:
+	<s:property value="userTruname" />
+		<br> 个性签名:
+	<s:property value="userIntro" />
+		<br>
+	</s:push>
 	<!-- 按钮添加模态框 -->
 	<button>修改信息</button>
 
 	<!--模态框的内容 -->
-	<s:form action="UserUpdateInfoAction" method="post" theme="bootstrap">
-		<s:textfield label="用户昵称" cssClass="form-control" name="userName"
-			value="%{#session.currentcurrentUserInstance.getUserName()}" readonly="true" />
-		<img src="${currentcurrentUserInstance.getUserAvatar()}" class="img-fluid"
-			alt="图片失效">
-		<s:file label="用户头像" cssClass="form-control" name="userAvatar" />
-		<s:password label="用户密码" cssClass="form-control" name="userPassword" />
-		<s:password label="再次输入密码" cssClass="form-control"
-			name="userPassword1" />
-		<s:textarea label="用户住址" cssClass="form-control" name="userAddr"
-			value="%{#session.currentcurrentUserInstance.getUserAddr()}" />
-		<s:textarea label="用户邮箱" cssClass="form-control" name="userEmail"
-			value="%{#session.currentcurrentUserInstance.getUserEmail()}" />
-		<s:textarea label="电话号码" cssClass="form-control" name="userTel"
-			value="%{#session.currentcurrentUserInstance.getUserTel()}" />
-		<s:textarea label="真实姓名" cssClass="form-control" name="userTruname"
-			value="%{#session.currentcurrentUserInstance.getUserTruname()}" />
-		<s:textarea label="个性签名" cssClass="form-control" name="userIntro"
-			value="%{#session.currentcurrentUserInstance.getUserIntro()}" />
-		<s:submit value="修改" cssClass="btn btn-outline btn-primary btn-sm" />
-	</s:form>
+	<s:push value="userinfo">
+		<s:form action="updateUser" method="post" enctype="multipart/form-data" theme="bootstrap">
+			<s:hidden name="userId" />
+			<s:textfield label="用户昵称" cssClass="form-control" name="userName"
+				readonly="true" />
+			<img src="${userAvatar}" class="img-fluid" alt="图片失效">
+			<s:file label="用户头像" cssClass="form-control" name="userAvatarFile" />
+			<s:password label="用户密码" cssClass="form-control" name="userPassword" />
+			<s:password label="再次输入密码" cssClass="form-control"
+				name="userPassword1" />
+			<s:textarea label="用户住址" cssClass="form-control" name="userAddr" />
+			<s:textarea label="用户邮箱" cssClass="form-control" name="userEmail" />
+			<s:textarea label="电话号码" cssClass="form-control" name="userTel" />
+			<s:textarea label="真实姓名" cssClass="form-control" name="userTruname" />
+			<s:textarea label="个性签名" cssClass="form-control" name="userIntro" />
+			<s:submit value="修改" cssClass="btn btn-outline btn-primary btn-sm" />
+		</s:form>
+	</s:push>
 	<s:debug />
 </body>
 </html>

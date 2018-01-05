@@ -1,8 +1,6 @@
-package Hibernate.CDU;
+package Component;
 
 import java.util.Map;
-
-import javax.swing.text.AbstractDocument.Content;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,8 +9,6 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.inject.Context;
-import com.sun.xml.internal.ws.client.RequestContext;
 
 public class FasadeCDU {
 	private Configuration configuration;
@@ -30,7 +26,6 @@ public class FasadeCDU {
 		session = sessionFactory.openSession();
 		transaction = session.beginTransaction();
 		context = ActionContext.getContext();
-		
 		sessionScope = context.getSession();
 	}
 

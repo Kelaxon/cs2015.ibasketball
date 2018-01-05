@@ -21,7 +21,7 @@
 	</h3>
 	<!--预留做提示信息 -->
 	<script type="text/javascript">
-		var message = "" + '${message}';
+		var message = "" + '${infoMessage}';
 		if (message != "") {
 			alert(message);
 			message = "";
@@ -33,7 +33,7 @@
 	<a href="managerMessageIndex.jsp">管理帖子</a>
 	<a href="managerUsersIndex.jsp">管理发布/TODO</a>
 	<a href="managerUsersIndex.jsp">管理用户</a>
-	<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
+	<s:url var="logoutUrl" action="LoginAction" method="logout">
 		<s:param name="username">
 			<s:property value="#session.managerInstance.getMagName()" />
 		</s:param>

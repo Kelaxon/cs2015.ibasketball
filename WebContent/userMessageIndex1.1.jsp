@@ -24,7 +24,7 @@
 
 <body>
 <script type="text/javascript">
-		var message = "" + '${message}';
+		var message = "" + '${infoMessage}';
 		if (message != "") {
 			alert(message);
 			message = "";
@@ -53,7 +53,7 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="userInfoIndex1.1.jsp">我的信息</a>
 					</li>
-					<s:url var="logoutUrl" action="AllUsersLoginAction" method="logout">
+					<s:url var="logoutUrl" action="LoginAction" method="logout">
 						<s:param name="username">
 							<s:property value="#session.currentUserInstance.getUserName()" />
 						</s:param>
@@ -68,7 +68,7 @@
 	
 	<!--预留做提示信息 -->
 	<script type="text/javascript">
-		var message = "" + '${message}';
+		var message = "" + '${infoMessage}';
 		if (message != "") {
 			alert(message);
 			message = "";
