@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC 
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
@@ -111,6 +111,25 @@
 			</key>
 			<one-to-many class="Hibernate.PO.Announceinfo" />
 		</set>
+		<!-- bi-directional one-to-many association to Usercollectgame -->
+		<set name="usercollectgames" lazy="true" inverse="true" cascade="none">
+			<meta attribute="field-description">
+				@hibernate.set
+				lazy="true"
+				inverse="true"
+				cascade="none"
+
+				@hibernate.collection-key
+				column="user_id"
+
+				@hibernate.collection-one-to-many
+				class="Hibernate.PO.Usercollectgame"
+			</meta>
+			<key>
+				<column name="user_id" />
+			</key>
+			<one-to-many class="Hibernate.PO.Usercollectgame" />
+		</set>
 		<!-- bi-directional one-to-many association to Usermessagenew -->
 		<set name="usermessagenews" lazy="true" inverse="true" cascade="none">
 			<meta attribute="field-description">
@@ -148,6 +167,25 @@
 				<column name="user_id" />
 			</key>
 			<one-to-many class="Hibernate.PO.Usercollectnew" />
+		</set>
+		<!-- bi-directional one-to-many association to Usermessagegame -->
+		<set name="usermessagegames" lazy="true" inverse="true" cascade="none">
+			<meta attribute="field-description">
+				@hibernate.set
+				lazy="true"
+				inverse="true"
+				cascade="none"
+
+				@hibernate.collection-key
+				column="user_id"
+
+				@hibernate.collection-one-to-many
+				class="Hibernate.PO.Usermessagegame"
+			</meta>
+			<key>
+				<column name="user_id" />
+			</key>
+			<one-to-many class="Hibernate.PO.Usermessagegame" />
 		</set>
 
 	</class>

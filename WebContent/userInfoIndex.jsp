@@ -31,13 +31,18 @@
 
 	<!-- part0.导航 -->
 	<s:url id="newsURL" action="listNewsAllUser" />
-	<s:url id="messagesURL" action="listMessageById" />
+	<s:url id="gamesURL" action="listGameAllUser" />
+	<s:url id="scoreURL" action="listScoreAllUser" />
+	<s:url id="messagesURL" action="listMessageByUser" />
+	<s:url id="collectionURL" action="listCollectionByUser" />
 	<s:url id="userURL" action="listUserById" />
-	<s:url id="logoutUrl" action="logout">
-	</s:url>
+	<s:url id="logoutUrl" action="logout" />
 
 	<s:a href="%{newsURL}">资讯首页</s:a>
+	<s:a href="%{gamesURL}">所有赛事</s:a>
+	<s:a href="%{scoreURL}">积分排行</s:a>
 	<s:a href="%{messagesURL}">查看我的帖子</s:a>
+	<s:a href="%{collectionURL}">查看我的收藏</s:a>
 	<s:a href="%{userURL}">我的信息</s:a>
 	<s:a href="%{logoutUrl}">退出登录</s:a>
 

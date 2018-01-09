@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC 
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
@@ -34,11 +34,11 @@
 			</meta>
 		</property>
 		<property name="teamTime" type="java.sql.Timestamp" column="team_time"
-			length="19">
+			length="10">
 			<meta attribute="field-description">
 				@hibernate.property
 				column="team_time"
-				length="19"
+				length="10"
 			</meta>
 		</property>
 		<property name="teamCoachers" type="java.lang.String" column="team_coachers"
@@ -76,6 +76,65 @@
 
 		<!-- Associations -->
 
+		<!-- bi-directional one-to-many association to Gameinfo -->
+		<set name="gameinfosByGameTeam1Id" lazy="true" inverse="true"
+			cascade="none">
+			<meta attribute="field-description">
+				@hibernate.set
+				lazy="true"
+				inverse="true"
+				cascade="none"
+
+				@hibernate.collection-key
+				column="game_team1_id"
+
+				@hibernate.collection-one-to-many
+				class="Hibernate.PO.Gameinfo"
+			</meta>
+			<key>
+				<column name="game_team1_id" />
+			</key>
+			<one-to-many class="Hibernate.PO.Gameinfo" />
+		</set>
+		<!-- bi-directional one-to-many association to Gameinfo -->
+		<set name="gameinfosByGameTeam2Id" lazy="true" inverse="true"
+			cascade="none">
+			<meta attribute="field-description">
+				@hibernate.set
+				lazy="true"
+				inverse="true"
+				cascade="none"
+
+				@hibernate.collection-key
+				column="game_team2_id"
+
+				@hibernate.collection-one-to-many
+				class="Hibernate.PO.Gameinfo"
+			</meta>
+			<key>
+				<column name="game_team2_id" />
+			</key>
+			<one-to-many class="Hibernate.PO.Gameinfo" />
+		</set>
+		<!-- bi-directional one-to-many association to Playerinfo -->
+		<set name="playerinfos" lazy="true" inverse="true" cascade="none">
+			<meta attribute="field-description">
+				@hibernate.set
+				lazy="true"
+				inverse="true"
+				cascade="none"
+
+				@hibernate.collection-key
+				column="team_id"
+
+				@hibernate.collection-one-to-many
+				class="Hibernate.PO.Playerinfo"
+			</meta>
+			<key>
+				<column name="team_id" />
+			</key>
+			<one-to-many class="Hibernate.PO.Playerinfo" />
+		</set>
 		<!-- bi-directional one-to-many association to Scoreinfo -->
 		<set name="scoreinfos" lazy="true" inverse="true" cascade="none">
 			<meta attribute="field-description">

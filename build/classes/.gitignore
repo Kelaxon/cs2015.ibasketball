@@ -1,8 +1,7 @@
-/Action/
-/Component/
-/DAO/
 /Hibernate/
-/JsonAction/
+/action/
+/component/
+/dao/
 /hibernate.cfg.xml
 /log4j.properties
 /struts.xml

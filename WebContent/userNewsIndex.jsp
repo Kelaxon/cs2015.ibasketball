@@ -27,15 +27,14 @@
 	<h5>登陆</h5>
 	<!-- 登陆表单 -->
 	<s:form class="form" action="login" method="post">
-		<s:textfield name="username" value="杨洋" />
-		<s:textfield name="password" value="123456" />
+		<s:textfield name="userName" value="molinli" />
+		<s:textfield name="userPassword" value="123456" />
 		<button type="submit">登录</button>
 	</s:form>
 
 	<!-- 注册表单 -->
 	<h5>注册</h5>
 	<s:form action="register" method="post" theme="bootstrap">
-		<s:hidden name="userId" />
 		<s:textfield label="用户昵称" cssClass="form-control" name="userName" />
 		<img src="${userAvatar}" class="img-fluid" alt="图片失效">
 		<s:file label="用户头像" cssClass="form-control" name="userAvatar" />
@@ -50,49 +49,51 @@
 		<s:submit value="注册" cssClass="btn btn-outline btn-primary btn-sm" />
 	</s:form>
 
-
-	<!-- debug:获取数据库内容进行测试按钮 -->
-	<s:form action="DebugAction" method="delete">
-		<s:submit value="Debug" cssClass="btn btn-outline btn-warning btn-sm" />
-	</s:form>
-
-
-
 	<!-- part0.导航 -->
 	<s:url id="newsURL" action="listNewsAllUser" />
-	<s:url id="messagesURL" action="listMessageById" />
+	<s:url id="gamesURL" action="listGameAllUser" />
+	<s:url id="scoreURL" action="listScoreAllUser" />
+	<s:url id="messagesURL" action="listMessageByUser" />
+	<s:url id="collectionURL" action="listCollectionByUser" />
 	<s:url id="userURL" action="listUserById" />
-	<s:url id="logoutUrl" action="logout">
-	</s:url>
+	<s:url id="logoutUrl" action="logout" />
 
 	<s:a href="%{newsURL}">资讯首页</s:a>
+	<s:a href="%{gamesURL}">所有赛事</s:a>
+	<s:a href="%{scoreURL}">积分排行</s:a>
 	<s:a href="%{messagesURL}">查看我的帖子</s:a>
+	<s:a href="%{collectionURL}">查看我的收藏</s:a>
 	<s:a href="%{userURL}">我的信息</s:a>
 	<s:a href="%{logoutUrl}">退出登录</s:a>
-	<s:fielderror />
 
+
+	<!-- 搜索框 -->
+	<s:form action="findNews" method="post" theme="bootstrap">
+		<s:textfield label="新闻标题" cssClass="form-control" name="searchKey"
+			value="篮球" />
+		<s:submit value="搜索" cssClass="btn btn-outline btn-primary btn-sm" />
+	</s:form>
 
 	<!-- part2.资讯 -->
-	<H2>比赛资讯</H2>
-
-	<s:iterator value="newsInfoList" var="news" status="st">
-		<img src="${news.getNewsPic()}" class="img-fluid" alt="图片失效">
+	<H2>新闻资讯</H2>
+	
+	<s:iterator value="newsInfoList">
+		<img src="${newsPic}" class="img-fluid" alt="图片失效">
 		<br>
-
 
 		<!-- 新闻标题 -->
 		<s:url id="certainNewsURL" action="listNewsById">
-			<s:param name="newsId" value="%{#news.getNewsId()}" />
+			<s:param name="newsId" value="%{newsId}" />
 		</s:url>
 		<s:a href="%{certainNewsURL}">
-			<s:property value="#news.getNewsTitle()" />
+			<s:property value="newsTitle" />
 		</s:a>
 		<br>
 
 		<!-- 新闻时间 -->
-		<s:property value="#news.getNewsTime()" />
+		<s:property value="newsTime" />
 		<br>
-		<s:property value="#news.getNewsContent()" />
+		<s:property value="newsContent" />
 		<br>
 	</s:iterator>
 	<s:debug />

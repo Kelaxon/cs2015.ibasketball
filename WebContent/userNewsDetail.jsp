@@ -31,55 +31,64 @@
 
 	<!-- part0.导航 -->
 	<s:url id="newsURL" action="listNewsAllUser" />
-	<s:url id="messagesURL" action="listMessageById" />
+	<s:url id="gamesURL" action="listGameAllUser" />
+	<s:url id="scoreURL" action="listScoreAllUser" />
+	<s:url id="messagesURL" action="listMessageByUser" />
+	<s:url id="collectionURL" action="listCollectionByUser" />
 	<s:url id="userURL" action="listUserById" />
-	<s:url id="logoutUrl" action="logout">
-	</s:url>
+	<s:url id="logoutUrl" action="logout" />
 
 	<s:a href="%{newsURL}">资讯首页</s:a>
+	<s:a href="%{gamesURL}">所有赛事</s:a>
+	<s:a href="%{scoreURL}">积分排行</s:a>
 	<s:a href="%{messagesURL}">查看我的帖子</s:a>
+	<s:a href="%{CollectionURL}">查看我的收藏</s:a>
 	<s:a href="%{userURL}">我的信息</s:a>
 	<s:a href="%{logoutUrl}">退出登录</s:a>
 
 
 	<!-- 新闻详情 -->
-	<h2>
-		<s:property value="newsinfo.getNewsTitle()" />
-	</h2>
+	<s:push value="newsinfo">
+		<h2>
+			<s:property value="newsTitle" />
+		</h2>
 
-	<p>
-		发布时间:
-		<s:property value="newsinfo.getNewsTime()" />
+		<p>
+			发布时间:
+			<s:property value="newsContent" />
 
-	</p>
-	<img src="<s:property value="newsinfo.getNewsPic()"/>"
-		class="img-fluid" alt="图片失效">
-	<p>
-		<s:property value="newsinfo.getNewsContent()" />
-	<p>
+		</p>
+		<img src="<s:property value="newsPic"/>" class="img-fluid" alt="图片失效">
+		<p>
+			<s:property value="newsContent" />
+		<p></p>
+	</s:push>
+
 	<H5>所有评论</H5>
-	<s:iterator value="messageList" var="message" status="st">
-		用户:<s:property value="#message.getUserinfo().getUserName()" />
+	<s:iterator value="messageList" status="st">
+		<img src="${userinfo.getUserAvatar()}" class="img-fluid" alt="图片失效">
+		用户:<s:property value="userinfo.getUserName()" />
 		<br>
-		留言：<s:property value="#message.getMessageContent()" />
+		留言：<s:property value="messageContent" />
 		<br>
-		时间:<s:property value="#message.getMessageTime()" />
+		时间:<s:property value="messageTime" />
 		<br>
 	</s:iterator>
 
 
 	<H5>提交评论</H5>
-	<s:form action="addMessage" method="post" theme="bootstrap"
-		cssClass="form-inline">
-		<p>
-			<s:hidden name="newsId" value="%{newsinfo.getNewsId()}" />
-			<s:textarea label="评论" name="messageContent" value="说点什么吧..."
-				cols="30" rows="4">
-			</s:textarea>
-		</p>
-		<s:submit value="提交" cssClass="btn" />
-	</s:form>
-
+	<s:push value="newsinfo">
+		<s:form action="addMessage" method="post" theme="bootstrap"
+			cssClass="form-inline">
+			<p>
+				<s:hidden name="newsId" />
+				<s:textarea label="评论" name="messageContent" value="说点什么吧..."
+					cols="30" rows="4">
+				</s:textarea>
+			</p>
+			<s:submit value="提交" cssClass="btn" />
+		</s:form>
+	</s:push>
 	<s:debug />
 
 </body>

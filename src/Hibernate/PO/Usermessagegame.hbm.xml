@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="Hibernate.PO.Usermessagegame" table="usermessagegame">
+		<meta attribute="class-description" inherit="false">
+			@hibernate.class
+			table="usermessagegame"
+		</meta>
+
+		<id name="umgId" type="java.lang.Integer" column="umg_id">
+			<meta attribute="field-description">
+				@hibernate.id
+				generator-class="assigned"
+				type="java.lang.Integer"
+				column="umg_id"
+
+
+			</meta>
+			<generator class="assigned" />
+		</id>
+
+		<property name="messageTime" type="java.sql.Timestamp"
+			column="message_time" length="19">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="message_time"
+				length="19"
+			</meta>
+		</property>
+		<property name="messageContent" type="java.lang.String"
+			column="message_context" length="65535">
+			<meta attribute="field-description">
+				@hibernate.property
+				column="message_context"
+				length="65535"
+			</meta>
+		</property>
+
+		<!-- Associations -->
+
+		<!-- bi-directional many-to-one association to Gameinfo -->
+		<many-to-one name="gameinfo" class="Hibernate.PO.Gameinfo"
+			not-null="true">
+			<meta attribute="field-description">
+				@hibernate.many-to-one
+				not-null="true"
+				@hibernate.column name="game_id"
+			</meta>
+			<column name="game_id" />
+		</many-to-one>
+		<!-- bi-directional many-to-one association to Userinfo -->
+		<many-to-one name="userinfo" class="Hibernate.PO.Userinfo"
+			not-null="true">
+			<meta attribute="field-description">
+				@hibernate.many-to-one
+				not-null="true"
+				@hibernate.column name="user_id"
+			</meta>
+			<column name="user_id" />
+		</many-to-one>
+
+	</class>
+</hibernate-mapping>

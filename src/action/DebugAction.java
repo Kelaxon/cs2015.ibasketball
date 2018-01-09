@@ -1,4 +1,4 @@
-package Action;
+package action;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +15,9 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import Component.FasadeCDU;
-import Component.QiniuUtil;
+import component.FasadeCDU;
+import component.QiniuUtil;
+import dao.DAO;
 import Hibernate.PO.Managerinfo;
 import Hibernate.PO.Newsinfo;
 import Hibernate.PO.Usercollectnew;
@@ -59,6 +60,7 @@ public class DebugAction extends ActionSupport implements ServletRequestAware {
 	public void setServletRequest(HttpServletRequest servletRequest) {
 		this.servletRequest = servletRequest;
 	}
+	
 
 	public String uploadTest() throws IOException {
 		String filePath = servletRequest.getSession().getServletContext().getRealPath("/");

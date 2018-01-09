@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class 
+    name="Hibernate.PO.Playerinfo" 
+    table="playerinfo"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="playerinfo"
+    </meta>
+
+    <id
+        name="playerId"
+        type="java.lang.Integer"
+        column="player_id"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="assigned"
+            type="java.lang.Integer"
+            column="player_id"
+
+
+        </meta>
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="playerAvatar"
+        type="java.lang.String"
+        column="player_avatar"
+        length="65535"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="player_avatar"
+            length="65535"
+        </meta>    
+    </property>
+    <property
+        name="playerPosition"
+        type="java.lang.String"
+        column="player_position"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="player_position"
+            length="20"
+        </meta>    
+    </property>
+    <property
+        name="playerHeight"
+        type="java.lang.Integer"
+        column="player_height"
+        length="10"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="player_height"
+            length="10"
+        </meta>    
+    </property>
+    <property
+        name="playerName"
+        type="java.lang.String"
+        column="player_name"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="player_name"
+            length="20"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to Teaminfo -->
+    <many-to-one
+        name="teaminfo"
+        class="Hibernate.PO.Teaminfo"
+        not-null="true"
+    >
+        <meta attribute="field-description">
+           @hibernate.many-to-one
+            not-null="true"
+           @hibernate.column name="team_id"         
+        </meta>
+        <column name="team_id" />
+    </many-to-one>
+
+</class>
+</hibernate-mapping>

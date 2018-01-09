@@ -29,31 +29,63 @@
 			message = "";
 		}
 	</script>
+
 	<!-- part0.导航 -->
-	<a href="userNewsIndex.jsp">资讯首页</a>
-	<a href="userMessageIndex.jsp">查看我的帖子</a>
-	<a href="userInfoIndex.jsp">我的信息</a>
-	<s:url var="logoutUrl" action="LoginAction" method="logout">
-		<s:param name="username">
-			<s:property value="#session.currentcurrentUserInstance.getUserName()" />
-		</s:param>
-	</s:url>
-	<a href="${logoutUrl}">退出登录</a>
+	<s:url id="newsURL" action="listNewsAllUser" />
+	<s:url id="gamesURL" action="listGameAllUser" />
+	<s:url id="scoreURL" action="listScoreAllUser" />
+	<s:url id="messagesURL" action="listMessageByUser" />
+	<s:url id="collectionURL" action="listCollectionByUser" />
+	<s:url id="userURL" action="listUserById" />
+	<s:url id="logoutUrl" action="logout" />
+
+	<s:a href="%{newsURL}">资讯首页</s:a>
+	<s:a href="%{gamesURL}">所有赛事</s:a>
+	<s:a href="%{scoreURL}">积分排行</s:a>
+	<s:a href="%{messagesURL}">查看我的帖子</s:a>
+	<s:a href="%{collectionURL}">查看我的收藏</s:a>
+	<s:a href="%{userURL}">我的信息</s:a>
+	<s:a href="%{logoutUrl}">退出登录</s:a>
 
 	<!-- part2.资讯 -->
-	<H2>比赛资讯</H2>
+	<H2>我的新闻收藏</H2>
 
-	<s:iterator value="#session.collectionList" var="collection"
-		status="st">
-		<img src="${collection.getNewsPic()}" class="img-fluid" alt="图片失效">
+	<s:iterator value="newsCollectionList" status="st">
+		<s:url id="certainNewsURL" action="listNewsById">
+			<s:param name="newsId" value="%{newsinfo.getNewsId()}" />
+		</s:url>
+		<s:a href="%{certainNewsURL}">
+			<s:property value="newsinfo.getNewsTitle()" />
+		</s:a>
 		<br>
-		<a href="userNewsDetail.jsp?newsId=${collection.getNewsId()}"><s:property
-				value="#collection.getNewsTitle()" /></a>
+		收藏时间:<s:property value="collectionTime" />
 		<br>
-		<s:property value="#collection.getNewsTime()" />
+		<s:form action="deleteCollection" method="post">
+			<s:hidden name="ucnId" />
+			<s:submit value="删除" method="delete"
+				cssClass="btn btn-outline btn-warning btn-sm" />
+			<br>
+		</s:form>
+	</s:iterator>
+
+	<H2>我的赛事收藏</H2>
+
+	<s:iterator value="gameCollectionList" status="st">
+		<img src="${gameinfo.teaminfoByGameTeam1Id.getTeamLogo()}" class="img-fluid"
+			alt="图片失效">
+		<s:property value="gameinfo.gameTeam1result" />
+		<img src="${gameinfo.teaminfoByGameTeam2Id.getTeamLogo()}" class="img-fluid"
+			alt="图片失效">
+		<s:property value="gameinfo.gameTeam2result" />
 		<br>
-		<s:property value="#collection.getNewsContent()" />
+		收藏时间:<s:property value="collectionTime" />
 		<br>
+		<s:form action="deleteCollection" method="post">
+			<s:hidden name="ucgId" />
+			<s:submit value="删除" method="delete"
+				cssClass="btn btn-outline btn-warning btn-sm" />
+			<br>
+		</s:form>
 	</s:iterator>
 	<s:debug />
 </body>

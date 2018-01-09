@@ -13,11 +13,14 @@
 		<property name="connection.characterEncoding">utf8</property>
 		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
 		<property name="hibernate.jdbc.lob.non_contextual_creation">true</property>
-		<mapping resource="Hibernate/PO/Userinfo.hbm.xml" />
 		<mapping resource="Hibernate/PO/Usermessagenew.hbm.xml" />
+		<mapping resource="Hibernate/PO/Usermessagegame.hbm.xml" />
+		<mapping resource="Hibernate/PO/Userinfo.hbm.xml" />
 		<mapping resource="Hibernate/PO/Usercollectnew.hbm.xml" />
+		<mapping resource="Hibernate/PO/Usercollectgame.hbm.xml" />
 		<mapping resource="Hibernate/PO/Teaminfo.hbm.xml" />
 		<mapping resource="Hibernate/PO/Scoreinfo.hbm.xml" />
+		<mapping resource="Hibernate/PO/Playerinfo.hbm.xml" />
 		<mapping resource="Hibernate/PO/Newsinfo.hbm.xml" />
 		<mapping resource="Hibernate/PO/Managerinfo.hbm.xml" />
 		<mapping resource="Hibernate/PO/Gameinfo.hbm.xml" />

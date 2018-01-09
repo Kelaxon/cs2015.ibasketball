@@ -40,6 +40,24 @@
 	</s:url>
 	<a href="${logoutUrl}">退出登录</a>
 
+
+	<!-- part0.导航 -->
+	<s:url id="newsURL" action="listNewsAllManager" />
+	<s:url id="gamesURL" action="listGameAllManager" />
+	<s:url id="scoreURL" action="listScoreAllManager" />
+	<s:url id="messagesURL" action="listMessageAllManager" />
+	<s:url id="collectionURL" action="listCollectionAllManager" />
+	<s:url id="userURL" action="listUserAllManager" />
+	<s:url id="logoutUrl" action="logout" />
+
+	<s:a href="%{newsURL}">资讯管理</s:a>
+	<s:a href="%{gamesURL}">赛事管理</s:a>
+	<s:a href="%{scoreURL}">积分管理</s:a>
+	<s:a href="%{messagesURL}">帖子管理</s:a>
+	<s:a href="%{CollectionURL}">收藏管理</s:a>
+	<s:a href="%{userURL}">用户管理</s:a>
+	<s:a href="%{logoutUrl}">退出登录</s:a>
+
 	<!-- part2.资讯 -->
 	<H2>比赛资讯</H2>
 	<table

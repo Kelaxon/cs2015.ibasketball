@@ -1,4 +1,4 @@
-package Component;
+package component;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -39,7 +39,6 @@ public class QiniuUtil {
 		String bucket = BUCK;// 这里请替换成自己的bucket--空间名
 
 		// 默认不指定key的情况下，以文件内容的hash值作为文件名
-		String key = null;
 		InputStream inputStream = new FileInputStream(file);
 		ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
 		byte[] buff = new byte[600]; // buff用于存放循环读取的临时数据
@@ -50,7 +49,7 @@ public class QiniuUtil {
 		byte[] uploadBytes = swapStream.toByteArray(); // uploadBytes
 														// 为转换之后的结果
 		Auth auth = Auth.create(accessKey, secretKey);
-		String upToken = auth.uploadToken(bucket);
+		String upToken = auth.uploadToken(bucket, fileName);
 		try {
 			Response response = uploadManager.put(uploadBytes, fileName, upToken);
 			// 解析上传成功的结果

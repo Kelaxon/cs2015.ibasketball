@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Set;
 
-public class Newsinfo implements Serializable {
+public class Newsinfo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private int newsId;
@@ -17,6 +17,8 @@ public class Newsinfo implements Serializable {
 	private Set<Usermessagenew> usermessagenews;
 	private Set<Usercollectnew> usercollectnews;
 
+	
+	
 	public int getNewsId() {
 		return newsId;
 	}
