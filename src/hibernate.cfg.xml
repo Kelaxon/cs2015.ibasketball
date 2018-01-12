@@ -12,6 +12,7 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="connection.characterEncoding">utf8</property>
 		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+		<property name="hibernate.current_session_context_class">thread</property>
 		<property name="hibernate.jdbc.lob.non_contextual_creation">true</property>
 		<mapping resource="Hibernate/PO/Usermessagenew.hbm.xml" />
 		<mapping resource="Hibernate/PO/Usermessagegame.hbm.xml" />

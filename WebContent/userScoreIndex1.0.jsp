@@ -47,7 +47,7 @@
 		<div class="container">
 
 			<a class="navbar-brand" href="index.html">CBA篮球资讯
-				&nbsp&nbsp&nbsp&nbsp<small>Welcome<s:property
+				&nbsp&nbsp&nbsp&nbsp<small>Welcome：<s:property
 						value="#session.currentUserInstance.getUserName()" /></small>
 			</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -194,7 +194,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="card my-4">
 					<h5 class="card-header">闫鹏飞</h5>
 					<div class="card-body">
@@ -217,7 +217,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 			<!--col-md-4  -->
 			<div class="col-lg-8">
@@ -231,7 +231,7 @@
 				<s:form action="findNews" method="post" theme="bootstrap">
 					<s:textfield label="" cssClass="form-control" name="searchKey"
 						value="广厦" />
-						<br>
+					<br>
 					<s:submit value="搜索" cssClass="btn btn-outline btn-primary btn-sm" />
 				</s:form>
 
@@ -252,28 +252,33 @@
 												<thead>
 													<tr>
 														<th data-field="num">排名</th>
+														<th data-field="image">队徽</th>
+														<th data-field="name">队名</th>
+														<th data-field="name">教练</th>														
 														<th data-field="num">胜次</th>
 														<th data-field="num">负次</th>
 														<th data-field="num">PPG</th>
 														<th data-field="num">PLP</th>
 														<th data-field="num">STG</th>
-														<th data-field="name">队名</th>
-														<th data-field="image"></th>
+														
+														<!-- <th data-field="num">时间</th> -->
 													</tr>
 												</thead>
 												<tbody>
 													<s:iterator value="scoreInfoList" var="score" status="st">
 														<tr>
 															<td><s:property value="scoreRanking" /></td>
+															<td><img src="${teaminfo.getTeamLogo()}"
+																style="width: 50px; height: 50px;" class="img-fluid"
+																alt="图片失效"></td>
+															<td><s:property value="teaminfo.getTeamName()" /></td>
+															<td><s:property value="teaminfo.getTeamCoachers()" /></td>
 															<td><s:property value="scoreWins" /></td>
 															<td><s:property value="scoreLoses" /></td>
 															<td><s:property value="scorePpg" /></td>
 															<td><s:property value="scorePlp" /></td>
 															<td><s:property value="scoreTg" /></td>
-															<td><s:property value="teaminfo.getTeamName()" /></td>
-															<td><img
-																src="${teaminfoByGameTeam2Id.getTeamLogo()}"
-																class="img-fluid" alt="图片失效"></td>
+															<%-- <td><s:property value="teaminfo.getTeamTime()" /></td> --%>
 														</tr>
 													</s:iterator>
 												</tbody>

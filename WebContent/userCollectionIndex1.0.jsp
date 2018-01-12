@@ -43,7 +43,7 @@
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 		
-			<a class="navbar-brand" href="index.html">CBA篮球资讯 &nbsp&nbsp&nbsp&nbsp<small>Welcome<s:property value="#session.currentUserInstance.getUserName()" /></small></a>
+			<a class="navbar-brand" href="index.html">CBA篮球资讯 &nbsp&nbsp&nbsp&nbsp<small>Welcome：<s:property value="#session.currentUserInstance.getUserName()" /></small></a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -130,25 +130,23 @@
 			alt="图片失效">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
-		<s:property value="gameinfo.gameTeam1result" />
+		<strong><s:property value="gameinfo.gameTeam1result" /></strong>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		
 		VS
 		
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<s:property value="gameinfo.gameTeam2result" />
+		<strong><s:property value="gameinfo.gameTeam2result" /></strong>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<img src="${gameinfo.teaminfoByGameTeam2Id.getTeamLogo()}" class="img-fluid"
 			alt="图片失效">
 			
 			
-		<br>
-		收藏时间:<s:property value="collectionTime" />
-		<br>
-		<br>
+		<hr>
+		收藏时间:
+		<a href = "#"><s:property value="collectionTime" /></a>
 		<s:form action="deleteCollection" method="post">
-		<s:property value ="ucgId" />
 			<s:hidden name="ucgId" />
 			<s:submit value="删除" method="delete"
 				cssClass="btn btn-outline btn-warning btn-sm" />

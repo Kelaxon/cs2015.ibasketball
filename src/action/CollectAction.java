@@ -42,6 +42,7 @@ public class CollectAction extends ActionSupport {
 
 	// 列出所有用户的所有新闻收藏
 	public String listAll() {
+		collectDao.setClass(Usercollectnew.class);
 		newsCollectionList = collectDao.listAll();
 		collectDao.setClass(Usercollectgame.class);
 		gameCollectionList = collectDao.listAll();
@@ -66,7 +67,7 @@ public class CollectAction extends ActionSupport {
 		newsCollectionList.addAll(userinfo.getUsercollectnews());
 		Collections.sort(newsCollectionList);
 
-		newsCollectionList.clear();
+		gameCollectionList.clear();
 		gameCollectionList.addAll(userinfo.getUsercollectgames());
 		Collections.sort(gameCollectionList);
 

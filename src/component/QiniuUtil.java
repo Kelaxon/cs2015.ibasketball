@@ -49,7 +49,7 @@ public class QiniuUtil {
 		byte[] uploadBytes = swapStream.toByteArray(); // uploadBytes
 														// 为转换之后的结果
 		Auth auth = Auth.create(accessKey, secretKey);
-		String upToken = auth.uploadToken(bucket, fileName);
+		String upToken = auth.uploadToken(bucket);
 		try {
 			Response response = uploadManager.put(uploadBytes, fileName, upToken);
 			// 解析上传成功的结果

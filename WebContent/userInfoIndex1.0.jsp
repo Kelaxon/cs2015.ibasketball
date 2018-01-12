@@ -44,7 +44,7 @@
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 		
-			<a class="navbar-brand" href="index.html">CBA篮球资讯 &nbsp&nbsp&nbsp&nbsp<small>Welcome<s:property value="#session.currentUserInstance.getUserName()" /></small></a>
+			<a class="navbar-brand" href="index.html">CBA篮球资讯 &nbsp&nbsp&nbsp&nbsp<small>Welcome：<s:property value="#session.currentUserInstance.getUserName()" /></small></a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -99,19 +99,15 @@
           </div>
         </div>
       
+    <s:push value="userinfo">  
     <div class="col-lg-4">
 		<img src="${userAvatar}" class="img-fluid rounded mb-4" style="height:196px;" alt="图片失效">
     </div>
     
-    <s:push value="userinfo">
     <div class="col-lg-2">
          <p>
             	用户昵称:
 			<s:property value="userName" />
-          </p>
-          <p>
-            	 用户邮箱:
-			<s:property value="userEmail" />
           </p>
           <p>
             	 用户住址:

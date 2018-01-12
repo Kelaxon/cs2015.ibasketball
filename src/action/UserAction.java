@@ -2,6 +2,7 @@ package action;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,28 +53,37 @@ public class UserAction extends ActionSupport implements ModelDriven<Userinfo> {
 		// 用户没修改密码的时候不更新
 		System.out.println(userinfo.getUserPassword().trim().equals(""));
 		if (userinfo.getUserPassword().trim().equals("")) {
-			Userinfo currentUser = (Userinfo) ActionContext.getContext().getSession().get("currentUserInstance");
+			Userinfo currentUser = (Userinfo) ActionContext.getContext()
+					.getSession().get("currentUserInstance");
 			userinfo.setUserPassword(currentUser.getUserPassword());
 		}
 
 		// 上传头像
-		if(userAvatarFileFileName==null || userAvatarFileFileName.trim().equals("") ){
-			Userinfo currentUser = (Userinfo) ActionContext.getContext().getSession().get("currentUserInstance");
+		if (userAvatarFileFileName == null
+				|| userAvatarFileFileName.trim().equals("")) {
+			Userinfo currentUser = (Userinfo) ActionContext.getContext()
+					.getSession().get("currentUserInstance");
 			userinfo.setUserAvatar(currentUser.getUserAvatar());
 		}
-
-		if (userAvatarFileFileName != null && userAvatarFileFileName.trim() != "") {
+		System.out.println("file"+userAvatarFileFileName);
+		if (userAvatarFileFileName != null
+				&& userAvatarFileFileName.trim() != "") {
 			servletRequest = ServletActionContext.getRequest();
-			String filePath = servletRequest.getSession().getServletContext().getRealPath("/");
+			String filePath = servletRequest.getSession().getServletContext()
+					.getRealPath("/");
 			File tempfile = new File(filePath, this.userAvatarFileFileName);
 			FileUtils.copyFile(this.userAvatarFile, tempfile);
 			try {
 
 				// 拼接文件名
 				String[] suffix = userAvatarFileFileName.split("\\."); // 要转义！
-				userAvatarFileFileName = userinfo.getUserName() + "." + suffix[suffix.length - 1];
-				new QiniuUtil().uploadToQiNiuYun(userAvatarFileFileName, userAvatarFile);
-				String userAvatarFileUrl = QiniuUtil.DOMAIN + userAvatarFileFileName;
+				
+				Timestamp d = new Timestamp(System.currentTimeMillis());
+				userAvatarFileFileName = d + "." + suffix[suffix.length - 1];
+				new QiniuUtil().uploadToQiNiuYun(userAvatarFileFileName,
+						userAvatarFile);
+				String userAvatarFileUrl = QiniuUtil.DOMAIN
+						+ userAvatarFileFileName;
 				userinfo.setUserAvatar(userAvatarFileUrl);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -96,7 +106,8 @@ public class UserAction extends ActionSupport implements ModelDriven<Userinfo> {
 
 	// 刷新单个用户
 	public String listById() {
-		Userinfo currentUser = (Userinfo) ActionContext.getContext().getSession().get("currentUserInstance");
+		Userinfo currentUser = (Userinfo) ActionContext.getContext()
+				.getSession().get("currentUserInstance");
 		if (currentUser == null) {
 			ActionContext.getContext().getSession().put("message", "请先登录!");
 			return ERROR;

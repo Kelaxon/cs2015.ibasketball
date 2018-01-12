@@ -9,11 +9,14 @@ import java.util.Map;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.InterceptorRefs;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import dao.DAOImpl;
+import Hibernate.PO.Managerinfo;
 import Hibernate.PO.Newsinfo;
+import Hibernate.PO.Userinfo;
 import Hibernate.PO.Usermessagenew;
 
 //配置拦截器刷新valuestack返回值
@@ -66,6 +69,18 @@ public class NewsAction extends ActionSupport implements ModelDriven<Newsinfo> {
 		newsDao.saveOrUpdate(newsinfo);
 		infoMessage = "添加成功!";
 		return SUCCESS;
+	}
+
+	// 添加新闻
+	public String delete() {
+		if (newsinfo.getNewsId() != 0) {
+			
+			System.out.println(newsinfo.getNewsId());
+			newsDao.delete(newsinfo.getNewsId());
+			infoMessage = "删除成功";
+			return SUCCESS;
+		}
+		return ERROR;
 	}
 
 	// 更新新闻

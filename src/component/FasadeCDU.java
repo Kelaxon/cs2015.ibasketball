@@ -11,8 +11,8 @@ import org.hibernate.cfg.Configuration;
 import com.opensymphony.xwork2.ActionContext;
 
 public class FasadeCDU {
-	private Configuration configuration;
-	private SessionFactory sessionFactory;
+	public Configuration configuration;
+	public SessionFactory sessionFactory;
 	public Session session;
 	public Transaction transaction;
 	public Query query;

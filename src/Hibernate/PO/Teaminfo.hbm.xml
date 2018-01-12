@@ -78,12 +78,12 @@
 
 		<!-- bi-directional one-to-many association to Gameinfo -->
 		<set name="gameinfosByGameTeam1Id" lazy="true" inverse="true"
-			cascade="none">
+			cascade="all">
 			<meta attribute="field-description">
 				@hibernate.set
 				lazy="true"
 				inverse="true"
-				cascade="none"
+				cascade="all"
 
 				@hibernate.collection-key
 				column="game_team1_id"
@@ -98,12 +98,12 @@
 		</set>
 		<!-- bi-directional one-to-many association to Gameinfo -->
 		<set name="gameinfosByGameTeam2Id" lazy="true" inverse="true"
-			cascade="none">
+			cascade="all">
 			<meta attribute="field-description">
 				@hibernate.set
 				lazy="true"
 				inverse="true"
-				cascade="none"
+				cascade="all"
 
 				@hibernate.collection-key
 				column="game_team2_id"
@@ -117,12 +117,12 @@
 			<one-to-many class="Hibernate.PO.Gameinfo" />
 		</set>
 		<!-- bi-directional one-to-many association to Playerinfo -->
-		<set name="playerinfos" lazy="true" inverse="true" cascade="none">
+		<set name="playerinfos" lazy="true" inverse="true" cascade="all">
 			<meta attribute="field-description">
 				@hibernate.set
 				lazy="true"
 				inverse="true"
-				cascade="none"
+				cascade="all"
 
 				@hibernate.collection-key
 				column="team_id"
@@ -136,12 +136,12 @@
 			<one-to-many class="Hibernate.PO.Playerinfo" />
 		</set>
 		<!-- bi-directional one-to-many association to Scoreinfo -->
-		<set name="scoreinfos" lazy="true" inverse="true" cascade="none">
+		<set name="scoreinfos" lazy="true" inverse="true" cascade="all">
 			<meta attribute="field-description">
 				@hibernate.set
 				lazy="true"
 				inverse="true"
-				cascade="none"
+				cascade="all"
 
 				@hibernate.collection-key
 				column="team_id"

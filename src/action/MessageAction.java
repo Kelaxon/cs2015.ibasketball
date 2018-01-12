@@ -66,7 +66,7 @@ public class MessageAction extends ActionSupport {
 		newsMessageList.addAll(userinfo.getUsermessagenews());
 		Collections.sort(newsMessageList);
 
-		newsMessageList.clear();
+		gameMessageList.clear();
 		gameMessageList.addAll(userinfo.getUsermessagegames());
 		Collections.sort(gameMessageList);
 		return SUCCESS;

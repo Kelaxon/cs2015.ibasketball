@@ -50,7 +50,7 @@
 		<div class="container">
 
 			<a class="navbar-brand" href="index.html">CBA篮球资讯
-				&nbsp&nbsp&nbsp&nbsp<small>Welcome<s:property
+				&nbsp&nbsp&nbsp&nbsp<small>Welcome：<s:property
 						value="#session.currentUserInstance.getUserName()" /></small>
 			</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -92,36 +92,34 @@
 
 		<s:push value="gameinfo">
 
-			<!-- 比赛详情 -->
-			<img src="${gameinfo.teaminfoByGameTeam1Id.getTeamLogo()}"
-				class="img-fluid" alt="图片失效">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
-		<s:property value="gameinfo.gameTeam1result" />
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		
-		VS
-		
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<s:property value="gameinfo.gameTeam2result" />
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<img src="${gameinfo.teaminfoByGameTeam2Id.getTeamLogo()}"
-				class="img-fluid" alt="图片失效">
-
 			<div class="row">
 
 				<!-- Post Content Column -->
 				<div class="col-lg-8">
-
-					<hr>
+					<h2>赛点评论</h2>
 					<p>
-						<s:property value="gameTime" />
+						<a href="#"><s:property value="gameTime" /></a>
 					</p>
 					<hr>
-					<img src="<s:property value="newsPic"/>" class="img-fluid"
-						alt="图片失效">
+					<div>
+
+						<img src="${gameinfo.teaminfoByGameTeam1Id.getTeamLogo()}"
+							class="img-fluid" alt="图片失效">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp; <strong><s:property
+								value="gameinfo.gameTeam1result" /></strong>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						VS
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<strong><s:property value="gameinfo.gameTeam2result" /></strong>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp; <img
+							src="${gameinfo.teaminfoByGameTeam2Id.getTeamLogo()}"
+							class="img-fluid" alt="图片失效">
+					</div>
+					<hr>
 					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<s:property value="gameComment" />
 					<p></p>
 		</s:push>
@@ -186,12 +184,10 @@
 
 							<div class="col-lg-6">
 								<ul class="list-unstyled mb-0">
-									<li><strong>位置：</strong>
-									<s:property value="playerId" /></li>
-									<li><strong>号码：</strong>
-									<s:property value="playerPosition" /></li>
-									<li><strong>身高：</strong>
-									<s:property value="playerHeight" /></li>
+									<li><strong>位置：</strong> <s:property value="playerId" /></li>
+									<li><strong>号码：</strong> <s:property
+											value="playerPosition" /></li>
+									<li><strong>身高：</strong> <s:property value="playerHeight" /></li>
 									<li><strong>效力球队：</strong> <s:property
 											value="teaminfo.getTeamName()" /></li>
 									<li><strong>出生日期：</strong> 1991-04-25</li>
@@ -217,12 +213,10 @@
 
 							<div class="col-lg-6">
 								<ul class="list-unstyled mb-0">
-									<li><strong>位置：</strong>
-									<s:property value="playerId" /></li>
-									<li><strong>号码：</strong>
-									<s:property value="playerPosition" /></li>
-									<li><strong>身高：</strong>
-									<s:property value="playerHeight" /></li>
+									<li><strong>位置：</strong> <s:property value="playerId" /></li>
+									<li><strong>号码：</strong> <s:property
+											value="playerPosition" /></li>
+									<li><strong>身高：</strong> <s:property value="playerHeight" /></li>
 									<li><strong>效力球队：</strong> <s:property
 											value="teaminfo.getTeamName()" /></li>
 									<li><strong>出生日期：</strong> 1991-04-25</li>
@@ -234,7 +228,7 @@
 			</s:iterator>
 		</s:push>
 
-<%-- 
+		<%-- 
 		<!-- Categories Widget -->
 		<div class="card my-4">
 			<h5 class="card-header">曹岩</h5>

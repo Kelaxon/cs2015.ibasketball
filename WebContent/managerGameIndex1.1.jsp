@@ -21,11 +21,6 @@
 	</head>
 <body>
 
-	<!-- debug:获取数据库内容进行测试按钮 -->
-	<s:form action="DebugAction" method="delete">
-		<s:submit value="Debug" cssClass="btn btn-outline btn-warning btn-sm" />
-	</s:form>
-
 	<!-- part0.导航栏 -->
 
 	<div id="wrapper">
@@ -59,30 +54,34 @@
 						</div>
 						
 						
-						<li><a href="managerNewsIndex1.1.jsp"> <i
+						<s:url id="newsURL" action="listNewsAllManager" />
+						<s:url id="gamesURL" action="listGameAllManager" />
+						<s:url id="messagesURL" action="listMessageAllManager" />
+						<s:url id="userURL" action="listUserAllManager" />
+
+						<li><s:a href="%{newsURL}"> <i
 								class="fa fa-sitemap fa-fw"></i>管理资讯
-						</a></li>
+						</s:a></li>
 
-						<li><a href="managerGameIndex1.1.jsp"><i
-								class="fa fa-table fa-fw"></i>管理赛事
-						</a></li>
-						
-						<li><a href="managerMessageIndex1.1.jsp"><i
-								class="fa fa-table fa-fw"></i>管理留言
-						</a></li>
+						<li><s:a href="%{gamesURL}"><i
+								class="fa fa-table fa-fw"></i>管理赛事 </s:a></li>
 
-						<li><a href="managerUsersIndex1.1.jsp"><i
-								class="fa fa-table fa-fw"></i>管理用户
-						</a></li>
+						<li><s:a href="%{messagesURL}"><i
+								class="fa fa-table fa-fw"></i>管理留言 </s:a></li>
+
+						<li><s:a href="%{userURL}"><i
+								class="fa fa-table fa-fw"></i>管理用户 </s:a></li>
 						
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->
 			</div>
 			<!-- /.navbar-static-side -->
+			<s:url id="logoutUrl" action="logout" />
+			
 			<ul class="nav navbar-top-links navbar-right">
-					<a class="navbar-brand" href="login.jsp">退出登陆</a>
-				</ul>
+				<s:a href="%{logoutUrl}">退出登录</s:a>
+			</ul>
 		</nav>
 
 					</ul>
@@ -124,7 +123,7 @@
 													<td><s:property value="gameTime" /></td>
 													<td><s:property value="teaminfoByGameTeam1Id.getTeamName()" /></td>
 													<td><s:property value="teaminfoByGameTeam2Id.getTeamName()" /></td>
-													<td><s:form action="ManagerCDUserAction" method="delete">
+													<td><s:form action="deleteGame" method="delete">
 															<s:hidden name="userId" value="%{#user.getUserId()}" />
 															<s:submit value="删除" method="delete"
 																cssClass="btn btn-outline btn-warning btn-sm" />
@@ -134,7 +133,7 @@
 											</s:iterator>
 										</tbody>
 									</table>
-									<a class="btn" id="modal-831243" role="button" href="#modal-container-831243" data-toggle="modal">添加用户</a>
+									<a class="btn" id="modal-831243" role="button" href="#modal-container-831243" data-toggle="modal">添加赛事</a>
 								</div>
 							</div>
 						</div>
@@ -154,7 +153,7 @@
 		<div class="modal fade" id="modal-container-831243" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
 				<div class="modal-dialog">
 					<div class="modal-content">
-					<s:form action="ManagerCDUserAction" method="create" theme="bootstrap">
+					<s:form action="addGame" method="add" theme="bootstrap">
 					
 						<div class="modal-header">
 							 
@@ -162,32 +161,20 @@
 								×
 							</button>
 							<h4 class="modal-title" id="myModalLabel">
-								添加用户
+								添加赛事
 							</h4>
 						</div>
-						
-						
-						
+												
 						<div class="modal-body">
-							<s:textfield label="用户昵称" cssClass="form-control" name="userName" />
-							<s:file label="用户头像" cssClass="form-control" name="userAvatar" />
-							<s:password label="用户密码" cssClass="form-control" name="userPassword" />
-							<s:password label="再次输入密码" cssClass="form-control"
-								name="userPassword1" />
-							<s:textarea label="用户住址" cssClass="form-control" name="userAddr" />
-							<s:textarea label="用户邮箱" cssClass="form-control" name="userEmail" />
-							<s:textarea label="电话号码" cssClass="form-control" name="userTel" />
-							<s:textarea label="真实姓名" cssClass="form-control" name="userTruname" />
-							<s:textarea label="个性签名" cssClass="form-control" name="userIntro" />
+							<s:textfield label="赛事时间" cssClass="form-control" name="gameTime" />
+							<s:textarea label="球队名称1" cssClass="form-control" name="userAddr" />
+							<s:textarea label="球队名称2" cssClass="form-control" name="userEmail" />
 						</div>
-					
-						
-						
+										
 						<div class="modal-footer">
 							<s:submit value="添加" cssClass="btn btn-outline btn-primary btn-sm" />
 						</div>
-						
-						
+												
 					</s:form>
 					</div>
 					

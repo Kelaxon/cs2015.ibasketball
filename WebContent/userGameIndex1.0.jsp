@@ -46,7 +46,7 @@
 		<div class="container">
 
 			<a class="navbar-brand" href="index.html">CBA篮球资讯
-				&nbsp&nbsp&nbsp&nbsp<small>Welcome<s:property
+				&nbsp&nbsp&nbsp&nbsp<small>Welcome：<s:property
 						value="#session.currentUserInstance.getUserName()" /></small>
 			</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -226,7 +226,7 @@
 				<!-- 搜索框 -->
 				<s:form action="findGame" method="post" theme="bootstrap">
 					<s:textfield label="赛事搜索" cssClass="form-control" name="searchKey"
-						value="篮球" />
+						value="浙江" />
 					<br>
 					<s:submit value="搜索" cssClass="btn btn-outline btn-primary btn-sm" />
 				</s:form>
@@ -257,6 +257,7 @@
 														<th data-field="image"></th>
 														<th data-field="name"></th>
 														<th data-field="name">详情</th>
+														<th data-field="name">操作</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -278,8 +279,15 @@
 															<td><s:url id="certainGameURL" action="listGameById">
 																	<s:param name="gameId" value="%{gameId}" />
 																</s:url> <s:a href="%{certainGameURL}">
-															查看详情
-														</s:a></td>
+																	查看详情
+																</s:a>
+															</td>
+															<td><s:form action="addCollection" method="post">
+																	<s:hidden name="gameId" value="%{#news.getNewsId()}" />
+																	<s:submit value="收藏" method="add"
+																		cssClass="btn btn-outline btn-warning btn-sm" />
+																</s:form>
+															</td>
 														</tr>
 													</s:iterator>
 												</tbody>

@@ -78,12 +78,12 @@
 			<column name="mag_id" />
 		</many-to-one>
 		<!-- bi-directional one-to-many association to Usermessagenew -->
-		<set name="usermessagenews" lazy="true" inverse="true" cascade="none">
+		<set name="usermessagenews" lazy="true" inverse="true" cascade="all">
 			<meta attribute="field-description">
 				@hibernate.set
 				lazy="true"
 				inverse="true"
-				cascade="none"
+				cascade="all"
 
 				@hibernate.collection-key
 				column="news_id"
@@ -97,12 +97,12 @@
 			<one-to-many class="Hibernate.PO.Usermessagenew" />
 		</set>
 		<!-- bi-directional one-to-many association to Usercollectnew -->
-		<set name="usercollectnews" lazy="true" inverse="true" cascade="none">
+		<set name="usercollectnews" lazy="true" inverse="true" cascade="all">
 			<meta attribute="field-description">
 				@hibernate.set
 				lazy="true"
 				inverse="true"
-				cascade="none"
+				cascade="all"
 
 				@hibernate.collection-key
 				column="news_id"

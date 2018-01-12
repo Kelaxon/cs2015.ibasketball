@@ -17,7 +17,7 @@
 	<div class="carousel-inner" role="listbox">
 		<!-- Slide One - Set the background image for this slide in the line below -->
 		<div class="carousel-item active"
-			style="background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515046711500&di=b315535ddf2f54d0b1578a064fd7dc39&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fphotoblog%2F7%2F3%2F9%2F2%2F7392377%2F20104%2F4%2F1270348272265.jpg')">
+			style="background-image: url('http://p22p064rh.bkt.clouddn.com/2.jpg')">
 			<div class="carousel-caption d-none d-md-block">
 				<h3>欢迎来到CBA篮球资讯</h3>
 				<p>这里是CBA篮球资讯，你可以在这里看到CBA的最新资讯</p>
@@ -25,7 +25,7 @@
 		</div>
 		<!-- Slide Two - Set the background image for this slide in the line below -->
 		<div class="carousel-item"
-			style="background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515046517923&di=aacf48863172d1aac415572608dfa304&imgtype=0&src=http%3A%2F%2Fnews.xiancn.com%2Fimages%2Fattachement%2Fjpg%2Fsite2%2F20160220%2Ff8b156c2006b18324c5157.jpg')">
+			style="background-image: url('http://p22p064rh.bkt.clouddn.com/5.jpg')">
 			<div class="carousel-caption d-none d-md-block">
 				<h3>欢迎来到CBA篮球资讯</h3>
 				<p>这里是CBA篮球资讯，除了新闻资讯外，你还可以浏览赛事消息</p>
@@ -33,7 +33,7 @@
 		</div>
 		<!-- Slide Three - Set the background image for this slide in the line below -->
 		<div class="carousel-item"
-			style="background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515688709575&di=3b6e3a283ac27d0afbe7bfcb48fbe856&imgtype=jpg&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D2379431979%2C2394469680%26fm%3D214%26gp%3D0.jpg')">
+			style="background-image: url('http://p22p064rh.bkt.clouddn.com/4.jpg')">
 			<div class="carousel-caption d-none d-md-block">
 				<h3>欢迎来到CBA篮球资讯</h3>
 				<p>这里是CBA篮球资讯，你可以对你感兴趣的赛事或新闻进行留言和收藏</p>
@@ -252,9 +252,9 @@
 					        $clamp(paragraph, {clamp: 10, useNativeClamp: false, animate: true});
 					    </script>
 
-							<s:form action="ManagerCDUNewsAction" method="delete">
+							<s:form action="addCollection" method="add">
 								<s:hidden name="newsId" value="%{#news.getNewsId()}" />
-								<s:submit value="收藏" method="delete"
+								<s:submit value="收藏" method="add"
 									cssClass="btn btn-outline btn-warning btn-sm" />
 							</s:form>
 						</div>

@@ -45,12 +45,12 @@
 		<!-- Associations -->
 
 		<!-- bi-directional one-to-many association to Newsinfo -->
-		<set name="newsinfos" lazy="true" inverse="true" cascade="none">
+		<set name="newsinfos" lazy="true" inverse="true" cascade="all">
 			<meta attribute="field-description">
 				@hibernate.set
 				lazy="true"
 				inverse="true"
-				cascade="none"
+				cascade="all"
 
 				@hibernate.collection-key
 				column="mag_id"

@@ -71,6 +71,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<Userinfo> 
 		Managerinfo managerinfo = null;
 		loginDao.setClass(Managerinfo.class); // 必不可少
 		List<Managerinfo> managerList = loginDao.find(map, DAOImpl.FULL_MATCH);
+		loginDao.setClass(Userinfo.class);
 		if (managerList != null && managerList.size()!=0) {
 			managerinfo = managerList.get(0);
 			ActionContext.getContext().getSession().put("currentUserInstance", managerinfo);

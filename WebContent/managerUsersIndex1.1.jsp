@@ -21,11 +21,6 @@
 </head>
 <body>
 
-	<!-- debug:获取数据库内容进行测试按钮 -->
-	<s:form action="DebugAction" method="delete">
-		<s:submit value="Debug" cssClass="btn btn-outline btn-warning btn-sm" />
-	</s:form>
-
 	<!-- part0.导航栏 -->
 
 	<div id="wrapper">
@@ -59,28 +54,33 @@
 							</div>
 							<!-- /.panel-body -->
 						</div>
+						
+						<s:url id="newsURL" action="listNewsAllManager" />
+						<s:url id="gamesURL" action="listGameAllManager" />
+						<s:url id="messagesURL" action="listMessageAllManager" />
+						<s:url id="userURL" action="listUserAllManager" />
 
-
-						<li><a href="managerNewsIndex1.1.jsp"> <i
+						<li><s:a href="%{newsURL}"> <i
 								class="fa fa-sitemap fa-fw"></i>管理资讯
-						</a></li>
+						</s:a></li>
 
-						<li><a href="managerGameIndex1.1.jsp"><i
-								class="fa fa-table fa-fw"></i>管理赛事 </a></li>
+						<li><s:a href="%{gamesURL}"><i
+								class="fa fa-table fa-fw"></i>管理赛事 </s:a></li>
 
-						<li><a href="managerMessageIndex1.1.jsp"><i
-								class="fa fa-table fa-fw"></i>管理留言 </a></li>
+						<li><s:a href="%{messagesURL}"><i
+								class="fa fa-table fa-fw"></i>管理留言 </s:a></li>
 
-						<li><a href="managerUsersIndex1.1.jsp"><i
-								class="fa fa-table fa-fw"></i>管理用户 </a></li>
+						<li><s:a href="%{userURL}"><i
+								class="fa fa-table fa-fw"></i>管理用户 </s:a></li>
 
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->
 			</div>
-			<!-- /.navbar-static-side -->
+			<s:url id="logoutUrl" action="logout" />
+			
 			<ul class="nav navbar-top-links navbar-right">
-				<a class="navbar-brand" href="login.jsp">退出登陆</a>
+				<s:a href="%{logoutUrl}">退出登录</s:a>
 			</ul>
 		</nav>
 
@@ -118,13 +118,13 @@
 										</tr>
 									</thead>
 									<tbody>
-										<s:iterator value="#session.userInfoList" var="user"
+										<s:iterator value="userList" var="user"
 											status="st">
 											<tr>
 												<td><s:property value="#user.getUserId()" /></td>
 												<td><s:property value="#user.getUserName()" /></td>
 												<td><s:property value="#user.getUserEmail()" /></td>
-												<td><s:form action="ManagerCDUserAction"
+												<td><s:form action="deleteUser"
 														method="delete">
 														<s:hidden name="userId" value="%{#user.getUserId()}" />
 														<s:submit value="删除" method="delete"

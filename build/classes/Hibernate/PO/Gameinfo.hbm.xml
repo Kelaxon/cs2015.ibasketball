@@ -68,12 +68,12 @@
 		<!-- Associations -->
 
 		<!-- bi-directional one-to-many association to Usercollectgame -->
-		<set name="usercollectgames" lazy="true" inverse="true" cascade="none">
+		<set name="usercollectgames" lazy="true" inverse="true" cascade="all">
 			<meta attribute="field-description">
 				@hibernate.set
 				lazy="true"
 				inverse="true"
-				cascade="none"
+				cascade="all"
 
 				@hibernate.collection-key
 				column="game_id"
@@ -87,12 +87,12 @@
 			<one-to-many class="Hibernate.PO.Usercollectgame" />
 		</set>
 		<!-- bi-directional one-to-many association to Usermessagegame -->
-		<set name="usermessagegames" lazy="true" inverse="true" cascade="none">
+		<set name="usermessagegames" lazy="true" inverse="true" cascade="all">
 			<meta attribute="field-description">
 				@hibernate.set
 				lazy="true"
 				inverse="true"
-				cascade="none"
+				cascade="all"
 
 				@hibernate.collection-key
 				column="game_id"

@@ -15,13 +15,13 @@
 		</action>
 		<action name="listScoreAllManager" class="action.ScoreAction"
 			method="listAll">
-			<result name="success">/managerScoreIndex.jsp</result>
+			<result name="success">/managerScoreIndex1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
 		<!-- 更新积分 -->
 		<action name="updateScore" class="action.ScoreAction" method="update">
-			<result name="success">/managerScoreIndex.jsp</result>
+			<result name="success">/managerScoreIndex1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 	</package>
@@ -96,7 +96,7 @@
 		</action>
 		<action name="listGameAllManager" class="action.GameAction"
 			method="listAll">
-			<result name="success">/managerGameIndex.jsp</result>
+			<result name="success">/managerGameIndex1.1.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
@@ -137,7 +137,7 @@
 		<!-- 读取全部 -->
 		<action name="listMessageAllManager" class="action.MessageAction"
 			method="listAll">
-			<result name="success">/managerMessageIndex.jsp</result>
+			<result name="success">/managerMessageIndex1.1.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
@@ -218,7 +218,7 @@
 		</action>
 
 		<!-- 管理员删除单个 -->
-		<action name="deleteCollection" class="action.CollectAction"
+		<action name="deleteCollectionManger" class="action.CollectAction"
 			method="delete">
 			<!-- 删除后要读取 -->
 			<result name="success" type="redirect">listCollectionAllManager</result>
@@ -255,7 +255,7 @@
 		</action>
 		<action name="listUserAllManager" class="action.UserAction"
 			method="listAll">
-			<result name="success">/managerUsersIndex.jsp</result>
+			<result name="success">/managerUsersIndex1.1.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
@@ -299,20 +299,30 @@
 
 	</package>
 
-	<!-- //////// 安卓客户端接口 //////// -->
+<!-- //////// 安卓客户端接口 //////// -->
 	<package name="AboutAndroid" namespace="/" extends="json-default">
 		<action name="loginApp" class="action.LoginAction" method="login">
 			<result type="json">
 				<param name="root">action</param>
 				<param name="includeProperties">
-					infoMessage,userinfo.*
+					userinfo.*
 				</param>
 				<param name="excludeProperties">
+					infoMessage,
 					userinfo.announceinfos,
 					userinfo.usermessagenews,
 					userinfo.usercollectnews,
 					userinfo.usercollectgames,
 					userinfo.usermessagegames
+				</param>
+			</result>
+		</action>
+
+		<action name="registerApp" class="action.LoginAction" method="register">
+			<result type="json">
+				<param name="root">action</param>
+				<param name="includeProperties">
+					infoMessage
 				</param>
 			</result>
 		</action>
@@ -342,7 +352,30 @@
 				<param name="includeProperties">infoMessage, newsInfoList.* </param>
 				<param name="excludeProperties">
 					newsInfoList.*\.usermessagenews,
-					newsInfoList.*\.usercollectnews
+					newsInfoList.*\.usercollectnews,
+					newsInfoList.*\.managerinfo
+				</param>
+			</result>
+		</action>
+
+		<!-- 读取所有赛事 -->
+		<action name="listGameAllApp" class="action.GameAction" method="listAll">
+			<result type="json">
+				<param name="root">action</param>
+				<param name="includeProperties">
+					infoMessage, gameinfoList.*\
+				</param>
+				<param name="excludeProperties">
+					gameinfoList.*\.usermessagegames,
+					gameinfoList.*\.usercollectgames,
+					gameinfoList.*\.teaminfoByGameTeam1Id.\*.scoreinfos,
+					gameinfoList.*\.teaminfoByGameTeam1Id.\*.playerinfos,
+					gameinfoList.*\.teaminfoByGameTeam1Id.\*.gameinfosByGameTeam2Id,
+					gameinfoList.*\.teaminfoByGameTeam1Id.\*.gameinfosByGameTeam1Id,
+					gameinfoList.*\.teaminfoByGameTeam2Id.\*.scoreinfos,
+					gameinfoList.*\.teaminfoByGameTeam2Id.\*.playerinfos,
+					gameinfoList.*\.teaminfoByGameTeam2Id.\*.gameinfosByGameTeam2Id,
+					gameinfoList.*\.teaminfoByGameTeam2Id.\*.gameinfosByGameTeam1Id,
 				</param>
 			</result>
 		</action>
@@ -361,6 +394,8 @@
 				</param>
 			</result>
 		</action>
+
+
 
 		<!-- 读取用户所有收藏 -->
 		<action name="listCollectionByUserApp" class="action.CollectAction"
@@ -384,10 +419,10 @@
 			method="listById">
 			<result type="json">
 				<param name="root">action</param>
-				<param name="includeProperties">infoMessage, newMessageList.* </param>
+				<param name="includeProperties">newMessageList.* </param>
 				<param name="excludeProperties">
-					newsInfoList.*\.usermessagenews,
-					newsInfoList.*\.usercollectnews
+					newMessageList.*\.usermessagenews,
+					newMessageList.*\.usercollectnews
 				</param>
 			</result>
 		</action>
