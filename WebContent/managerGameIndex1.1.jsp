@@ -101,7 +101,7 @@
 					</br>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<b>比赛资讯</b>
+							<b>用户列表</b>
 						</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
@@ -112,33 +112,29 @@
 										id="selectpro">
 										<thead>
 											<tr>
-												<th data-field="num">新闻编号</th>
-												<th data-field="name">新闻标题</th>
-												<th data-field="ghgongzi">创建时间</th>
-												<th data-field="ghgongzics">创建者</th>
+												<th data-field="num">赛事时间</th>
+												<th data-field="name">球队名称1</th>
+												<th data-field="ghgongzi">球队名称2</th>
 												<th data-field="ghgongzics">操作</th>
 											</tr>
 										</thead>
 										<tbody>
-											<s:iterator value="#session.newsInfoList" var="news" status="st">
-												<tr>											
-													
-													 																																												
-													<td> <!--这里要加修改的模态框 -->
-													 <a class="btn" id="modal-831243" role="button" href="#modal-container-831243" data-toggle="modal"><s:property value="#news.getNewsId()" /></a>
-													</td>
-													<td><s:property value="#news.getNewsTitle()" /></td>
-													<td><s:property value="#news.getNewsTime()" /></td>
-													<td><s:property value="#news.getManagerinfo.getMagName()" /></td>
-													<td><s:form action="ManagerCDUNewsAction" method="delete">
-																<s:hidden name="newsId" value="%{#news.getNewsId()}" />
-																<s:submit value="删除" method="delete"
-																	cssClass="btn btn-outline btn-warning btn-sm" />
-															</s:form></td>												
+											<s:iterator value="gameinfoList" var="user" status="st">
+												<tr>														 																																												
+													<td><s:property value="gameTime" /></td>
+													<td><s:property value="teaminfoByGameTeam1Id.getTeamName()" /></td>
+													<td><s:property value="teaminfoByGameTeam2Id.getTeamName()" /></td>
+													<td><s:form action="ManagerCDUserAction" method="delete">
+															<s:hidden name="userId" value="%{#user.getUserId()}" />
+															<s:submit value="删除" method="delete"
+																cssClass="btn btn-outline btn-warning btn-sm" />
+														</s:form>
+													</td>										
 												</tr>
 											</s:iterator>
 										</tbody>
 									</table>
+									<a class="btn" id="modal-831243" role="button" href="#modal-container-831243" data-toggle="modal">添加用户</a>
 								</div>
 							</div>
 						</div>
@@ -158,7 +154,7 @@
 		<div class="modal fade" id="modal-container-831243" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
 				<div class="modal-dialog">
 					<div class="modal-content">
-					<s:form action="ManagerCDUNewsAction" method="update" theme="bootstrap">
+					<s:form action="ManagerCDUserAction" method="create" theme="bootstrap">
 					
 						<div class="modal-header">
 							 
@@ -166,33 +162,29 @@
 								×
 							</button>
 							<h4 class="modal-title" id="myModalLabel">
-								修改新闻内容
+								添加用户
 							</h4>
 						</div>
 						
 						
 						
 						<div class="modal-body">
-							<h4>
-								&nbsp&nbsp&nbsp&nbsp&nbsp<s:textfield label="新闻标题" cssClass="form-control" name="topicTitle"
-									value="%{#news.getNewsTitle()}" />
-							</h4>
-							<br>
-							<s:textarea label="新闻内容" cssClass="form-control"
-								value="%{#news.getNewsContent()}" rows="10" />
-							<br>
-							<img src="${news.getNewsPic()} }" class="img-fluid" alt="图片失效">
-							<br>
-							<br>
-							<s:file label="更改图片" cssClass="form-control" name="picture" />
+							<s:textfield label="用户昵称" cssClass="form-control" name="userName" />
+							<s:file label="用户头像" cssClass="form-control" name="userAvatar" />
+							<s:password label="用户密码" cssClass="form-control" name="userPassword" />
+							<s:password label="再次输入密码" cssClass="form-control"
+								name="userPassword1" />
+							<s:textarea label="用户住址" cssClass="form-control" name="userAddr" />
+							<s:textarea label="用户邮箱" cssClass="form-control" name="userEmail" />
+							<s:textarea label="电话号码" cssClass="form-control" name="userTel" />
+							<s:textarea label="真实姓名" cssClass="form-control" name="userTruname" />
+							<s:textarea label="个性签名" cssClass="form-control" name="userIntro" />
 						</div>
 					
 						
 						
 						<div class="modal-footer">
-							 
-							<s:hidden name="newsId" value="%{#news.getTopicId()}" />
-							<s:submit value="修改" cssClass="btn btn-outline btn-primary btn-sm" />
+							<s:submit value="添加" cssClass="btn btn-outline btn-primary btn-sm" />
 						</div>
 						
 						

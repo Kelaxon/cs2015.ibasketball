@@ -122,7 +122,7 @@ public class CollectAction extends ActionSupport {
 
 	// 删除
 	public String delete() {
-
+		System.out.println("ucgId"+""+ucgId);
 		// 获得用户实体
 		Userinfo userinfo = (Userinfo) ActionContext.getContext().getSession().get("currentUserInstance");
 		if (userinfo == null) {
@@ -133,12 +133,14 @@ public class CollectAction extends ActionSupport {
 		if (ucnId != 0) {
 			collectDao.delete(ucnId);
 			infoMessage = "删除成功";
-			return "news";
+			return SUCCESS;
 		}
 		if (ucgId != 0) {
+			collectDao.setClass(Usercollectgame.class);
 			collectDao.delete(ucgId);
+			collectDao.setClass(Usercollectnew.class);
 			infoMessage = "删除成功";
-			return "game";
+			return SUCCESS;
 		}
 		return ERROR;
 	}

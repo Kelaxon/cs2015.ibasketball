@@ -1,7 +1,2 @@
-/Hibernate/
 /action/
-/component/
-/dao/
-/hibernate.cfg.xml
-/log4j.properties
-/struts.xml
+/Hibernate/

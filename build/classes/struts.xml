@@ -10,7 +10,7 @@
 		<!-- 读取全部 -->
 		<action name="listScoreAllUser" class="action.ScoreAction"
 			method="listAll">
-			<result name="success">/userScoreIndex.jsp</result>
+			<result name="success">/userScoreIndex1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 		<action name="listScoreAllManager" class="action.ScoreAction"
@@ -32,25 +32,25 @@
 
 		<!-- 读取单个 -->
 		<action name="findNews" class="action.NewsAction" method="find">
-			<result name="success">/userNewsIndex.jsp</result>
+			<result name="success">/userNewsIndex1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
 		<!-- 读取全部 -->
 		<action name="listNewsAllUser" class="action.NewsAction"
 			method="listAll">
-			<result name="success">/userNewsIndex.jsp</result>
+			<result name="success">/userNewsIndex1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 		<action name="listNewsAllManager" class="action.NewsAction"
 			method="listAll">
-			<result name="success">/managerNewsIndex.jsp</result>
+			<result name="success">/managerNewsIndex1.1.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
 		<!-- 读取单个 -->
 		<action name="listNewsById" class="action.NewsAction" method="listById">
-			<result name="success">/userNewsDetail.jsp</result>
+			<result name="success">/userNewsDetail1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
@@ -74,7 +74,7 @@
 
 		<!-- 更新新闻 -->
 		<action name="updateNews" class="action.NewsAction" method="update">
-			<result name="success">/managerNewsIndex.jsp</result>
+			<result name="success">/managerNewsIndex1.1.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 	</package>
@@ -84,14 +84,14 @@
 
 		<!-- 读取单个 -->
 		<action name="findGame" class="action.GameAction" method="find">
-			<result name="success">/userGameIndex.jsp</result>
+			<result name="success">/userGameIndex1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
 		<!-- 读取全部 -->
 		<action name="listGameAllUser" class="action.GameAction"
 			method="listAll">
-			<result name="success">/userGameIndex.jsp</result>
+			<result name="success">/userGameIndex1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 		<action name="listGameAllManager" class="action.GameAction"
@@ -102,7 +102,7 @@
 
 		<!-- 读取单个 -->
 		<action name="listGameById" class="action.GameAction" method="listById">
-			<result name="success">/userGameDetail.jsp</result>
+			<result name="success">/userGameDetail1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
@@ -144,7 +144,7 @@
 		<!-- 读取单个用户的全部 -->
 		<action name="listMessageByUser" class="action.MessageAction"
 			method="listByUser">
-			<result name="success">/userMessageIndex.jsp</result>
+			<result name="success">/userMessageIndex1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
@@ -183,14 +183,15 @@
 		<!-- 读取全部 -->
 		<action name="listCollectionAllManager" class="action.CollectAction"
 			method="listAll">
-			<result name="success">/managerCollectionIndex.jsp</result>
+			<!--managerCollectionIndexs  -->
+			<result name="success">/userCollectionIndex1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
 		<!-- 读取单个用户的全部 -->
 		<action name="listCollectionByUser" class="action.CollectAction"
 			method="listByUser">
-			<result name="success">/userCollectionIndex.jsp</result>
+			<result name="success">/userCollectionIndex1.0.jsp</result>
 			<result name="error">/404.jsp</result>
 		</action>
 
@@ -249,8 +250,8 @@
 			<result name="error">/404.jsp</result>
 		</action>
 		<action name="listUserById" class="action.UserAction" method="listById">
-			<result name="success">/userInfoIndex.jsp</result>
-			<result name="error">/userNewsIndex.jsp</result>
+			<result name="success">/userInfoIndex1.0.jsp</result>
+			<result name="error">/userNewsIndex1.0.jsp</result>
 		</action>
 		<action name="listUserAllManager" class="action.UserAction"
 			method="listAll">
@@ -283,8 +284,8 @@
 			<result name="manager" type="redirectAction">
 				<param name="actionName">listNewsAllManager</param>
 			</result>
-			<result name="input">/userNewsIndex.jsp</result>
-			<result name="error">/userNewsIndex.jsp</result>
+			<result name="input">/userNewsIndex1.0.jsp</result>
+			<result name="error">/userNewsIndex1.0.jsp</result>
 		</action>
 		<action name="logout" class="action.LoginAction" method="logout">
 			<result name="success">/index.jsp</result>

@@ -133,12 +133,14 @@ public class MessageAction extends ActionSupport {
 		if (umnId != 0) {
 			messageDao.delete(umnId);
 			infoMessage = "删除成功";
-			return "news";
+			return SUCCESS;
 		}
 		if (umgId != 0) {
+			messageDao.setClass(Usermessagegame.class);
 			messageDao.delete(umgId);
+			messageDao.setClass(Usermessagenew.class);
 			infoMessage = "删除成功";
-			return "game";
+			return SUCCESS;
 		}
 		return ERROR;
 	}
