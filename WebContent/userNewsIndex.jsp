@@ -31,6 +31,13 @@
 		<s:textfield name="userPassword" value="123456" />
 		<button type="submit">登录</button>
 	</s:form>
+	
+	<!-- 登陆表单 -->
+	<s:form class="form" action="login!" method="post">
+		<s:textfield name="userName" value="molinli" />
+		<s:textfield name="userPassword" value="123456" />
+		<button type="submit">登录2</button>
+	</s:form>
 
 	<!-- 注册表单 -->
 	<h5>注册</h5>

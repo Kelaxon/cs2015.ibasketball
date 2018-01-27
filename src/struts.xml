@@ -279,7 +279,7 @@
 
 	<!-- 登陆管理 -->
 	<package name="AboutLogin" extends="struts-default">
-		<action name="login" class="action.LoginAction" method="login">
+		<action name="login" class="action.LoginAction" method="logins">
 			<result name="user">/index.jsp</result>
 			<result name="manager" type="redirectAction">
 				<param name="actionName">listNewsAllManager</param>

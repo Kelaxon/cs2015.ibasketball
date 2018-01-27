@@ -33,25 +33,25 @@ public class LoginAction extends ActionSupport implements ModelDriven<Userinfo> 
 	private String infoMessage;
 
 	// 登陆
-	public String login() {
-
+	public String login() throws Exception {
+		System.out.println(userinfo.getUserName());
 		String username = userinfo.getUserName();
 		String password = userinfo.getUserPassword();
 
-		// 安卓端
-		if (UA != null && UA.trim() != "") {
-			Map<String, String> map = new HashMap<>();
-			map.put("userName", username);
-			map.put("userPassword", password);
-
-			userinfo = (Userinfo) loginDao.find(map, DAOImpl.FULL_MATCH).get(0);
-			if (userinfo != null) {
-				infoMessage = "登录成功";
-				return SUCCESS;
-			}
-			infoMessage = "登陆信息有误";
-			return SUCCESS;
-		}
+//		// 安卓端
+//		if (UA != null && UA.trim() != "") {
+//			Map<String, String> map = new HashMap<>();
+//			map.put("userName", username);
+//			map.put("userPassword", password);
+//
+//			userinfo = (Userinfo) loginDao.find(map, DAOImpl.FULL_MATCH).get(0);
+//			if (userinfo != null) {
+//				infoMessage = "登录成功";
+//				return SUCCESS;
+//			}
+//			infoMessage = "登陆信息有误";
+//			return SUCCESS;
+//		}
 
 		// Web端
 		Map<String, String> map = new HashMap<>();
